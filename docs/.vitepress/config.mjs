@@ -5,7 +5,7 @@ export default defineConfig({
   title: "杂七杂八的档案室",
   description: "杂七杂八的配置, 一些新的感悟",
   lang: "zh_Hans",
-  ignoreDeadLinks: true,
+  // ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon-vitepress-noeffect-3.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon-vitepress-noeffect-3.png' }]
@@ -55,7 +55,7 @@ export default defineConfig({
             items: [
               {
                 text: "Archlinux",
-                link: "/os/linux/archlinux"
+                link: "/os/linux/archlinux/"
               } 
             ]
           },
@@ -69,7 +69,7 @@ export default defineConfig({
             items: [
               {
                 text: "VMWare",
-                link: "/software/vmtools/vmware"
+                link: "/software/vmtools/vmware/"
               }
             ]
           }

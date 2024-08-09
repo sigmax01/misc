@@ -2,4 +2,4 @@
 
 - ✅ 操作系统
     - ✅ Linux
-        - 🈚️ [Archlinux](/os/linux/archlinux)
+        - 🈚️ [Archlinux](/os/linux/archlinux/)
