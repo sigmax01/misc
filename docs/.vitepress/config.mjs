@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "杂七杂八的档案室",
   description: "杂七杂八的配置, 一些新的感悟",
+  lastUpdated: true,
   lang: "zh_Hans",
   // ignoreDeadLinks: true,
   head: [
@@ -18,6 +19,25 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/favicon-vitepress-noeffect-3.svg',
+    search: {
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档'
+          },
+          modal: {
+            noResultsText: '无法找到相关结果',
+            resetButtonTitle: '清除查询条件',
+            footer: {
+              selectText: '选择',
+              navigateText: '切换'
+            }
+          }
+        }
+      }
+    },
     editLink: {
       pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页面'
@@ -29,13 +49,7 @@ export default defineConfig({
     outline: {
       label: '页面导航'
     },
-    astUpdated: {
-      text: '最后更新于',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'medium'
-      }
-    },
+    lastUpdatedText: "📑 最后更新于",
     langMenuLabel: '多语言',
     returnToTopLabel: '回到顶部',
     sidebarMenuLabel: '菜单',
@@ -43,10 +57,6 @@ export default defineConfig({
     lightModeSwitchTitle: '切换到浅色模式',
     darkModeSwitchTitle: '切换到深色模式',
     nav: [
-      {
-        text: "导航",
-        link: "nav"
-      },
       { 
         text: '操作系统', 
         items: [
