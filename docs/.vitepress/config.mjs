@@ -82,12 +82,21 @@ export default defineConfig({
                 link: "/software/vmtools/vmware/"
               }
             ]
+          },
+          {
+            text: "桌面",
+            items: [
+              {
+                text: "KDE",
+                link: "/software/desktop/kde/"
+              }
+            ]
           }
         ]
       }
     ],
     sidebar: {
-      "/os/linux/archlinux": [
+      "/os/linux/archlinux/": [
         {
           text: '安装',
           items: [
@@ -101,7 +110,13 @@ export default defineConfig({
           ]
         }
       ],
-      "/software": [
+      "/software/desktop/kde/": [
+        {
+          text: '配置',
+          link: '/software/desktop/kde/config'
+        }
+      ],
+      "/software/vmtools/vmware/": [
         {
           text: '问题',
           items: [
