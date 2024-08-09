@@ -1,5 +1,13 @@
 ---
+title: Archlinux X86安装
+layout: doc
+navbar: true
+sidebar: true
+aside: true
 outline: deep
+lastUpdated: true
+editLink: true
+footer: true
 ---
 
 # X86安装
@@ -90,7 +98,7 @@ mount /dev/nvme0n1p1 /mnt/efi
 df -h
 ```
 
-### 更新keyring, 确保老的镜像文件也可以下载包
+### 更新keyring
 
 ```bash
 pacman -Sy
