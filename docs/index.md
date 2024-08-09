@@ -7,15 +7,15 @@ hero:
   text: "包含各种硬件, 一众软件的使用指南"
   tagline: 总能找到你想要的东西🫰
   image:
-    src: /favicon-vitepress-noeffect-2.svg
+    src: /favicon-vitepress-3.svg
     alt: 背景图
   actions:
     - theme: brand
       text: 循迹漫游
-      link: /markdown-examples
+      link: nav
     - theme: alt
       text: Linux使用指南
-      link: /api-examples
+      link: /os/linux
 
 features:
   - title: 💡 小建议
