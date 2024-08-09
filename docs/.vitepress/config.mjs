@@ -58,10 +58,6 @@ export default defineConfig({
               } 
             ]
           },
-          {
-            text: 'MacOS',
-            link: '/os/macos'
-          }
         ]
       },
       {
@@ -96,8 +92,11 @@ export default defineConfig({
       ],
       "/software": [
         {
-          text: '🚧 施工中...'
-        }
+          text: '问题',
+          items: [
+            { text: '鼠标抓取', link: '/software/vmtools/vmware/mouse-grub' }
+          ]
+        },
       ]
     },
     socialLinks: [
