@@ -5,6 +5,7 @@ export default defineConfig({
   title: "杂七杂八的档案室",
   description: "杂七杂八的配置, 一些新的感悟",
   lang: "zh_Hans",
+  ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon-vitepress-noeffect-3.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon-vitepress-noeffect-3.png' }]
