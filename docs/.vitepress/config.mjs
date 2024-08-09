@@ -11,7 +11,7 @@ export default defineConfig({
       { text: 'Examples', link: '/markdown-examples' }
     ],
 
-    logo: '/favicon-vitepress-noeffect.svg',
+    logo: '/favicon-vitepress-noeffect-2.svg',
 
     sidebar: [
       {
