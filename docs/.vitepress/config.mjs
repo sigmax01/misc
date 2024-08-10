@@ -76,8 +76,8 @@ export default defineConfig({
     sidebar,
     socialLinks: [{ icon: "github", link: "https://github.com/ricolxwz" }],
     footer: {
-      message: "Released under the MIT License.",
-      copyright: "Copyright © 2024-present Wenze X ♥️.",
+      message: "基于 MIT 许可发布",
+      copyright: "版权所有 © 2024-至今 许文泽 ️🌴.",
     },
   },
 });

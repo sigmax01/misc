@@ -17,9 +17,45 @@ export const sidebar = {
   ],
   "/software/vmtools/vmware/": [
     {
+      text: "优化",
+      items: [
+        { text: "选项", link: "/software/vmtools/vmware/choice" },
+        { text: "CPU", link: "/software/vmtools/vmware/cpu" },
+        {
+          text: "网络",
+          link: "/software/vmtools/vmware/network",
+        },
+        {
+          text: "存储",
+          link: "/software/vmtools/vmware/storage",
+        },
+      ],
+    },
+    {
       text: "问题",
       items: [
         { text: "鼠标抓取", link: "/software/vmtools/vmware/mouse-grub" },
+        {
+          text: "鼠标侧边栏按键",
+          link: "/software/vmtools/vmware/mouse-side-tools",
+        },
+        {
+          text: "无法找到共享文件夹",
+          link: "/software/vmtools/vmware/shared-cannot-find",
+        },
+      ],
+    },
+    {
+      text: "提示",
+      items: [
+        {
+          text: "切换磁盘为预分配/动态分配",
+          link: "/software/vmtools/vmware/disk-switch-allocation",
+        },
+        {
+          text: "VMWare工具",
+          link: "/software/vmtools/vmware/vmware-tools",
+        },
       ],
     },
   ],

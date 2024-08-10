@@ -1,3 +1,15 @@
+---
+title: VMWare 鼠标抓取问题
+layout: doc
+navbar: true
+sidebar: true
+aside: true
+outline: deep
+lastUpdated: true
+editLink: true
+footer: true
+---
+
 # 鼠标抓取问题
 
 自动抓取鼠标可能导致虚拟机内tilling功能出现故障, 所以关闭.

@@ -1,3 +1,15 @@
+---
+title: Archlinux 声音卡顿问题
+layout: doc
+navbar: true
+sidebar: true
+aside: true
+outline: deep
+lastUpdated: true
+editLink: true
+footer: true
+---
+
 # 声音卡顿问题
 
 环境为VMWare, 使用的后端是Pipewire, 📢经常出现断断续续1-2分钟之后正常播放的问题. 经发现可能是buffer太小导致的.
