@@ -52,7 +52,8 @@ lsblk
 parted /dev/nvme0n1
 mktable gpt
 mkpart EFI 0% 800MB
-mkpart PRI 800MB 100%
+mkpart SWAP 800MB 16GB
+mkpart PRI 16GB 100%
 print
 quit
 fdisk -l
@@ -62,9 +63,10 @@ fdisk -l
 
 ```bash
 mkfs.vfat /dev/nvme0n1p1
-mkfs.xfs /dev/nvme0n1p2
-# mkfs.ext4 /dev/nvme0n1p2
-# mkfs.btrfs /dev/nvme0n1p2
+mkswap /dev/nvme0n1p2
+mkfs.xfs /dev/nvme0n1p3
+# mkfs.ext4 /dev/nvme0n1p3
+# mkfs.btrfs /dev/nvme0n1p3
 ```
 
 ### 挂载
@@ -72,9 +74,10 @@ mkfs.xfs /dev/nvme0n1p2
 #### Ext4/XFS
 
 ```bash
-mount /dev/nvme0n1p2 /mnt
+mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/efi
 mount /dev/nvme0n1p1 /mnt/efi
+swapon /dev/nvme0n1p2
 df -h
 ```
 
@@ -82,19 +85,20 @@ df -h
 
 ```bash
 # 为了创建子卷, 必须先挂载子卷所属的文件系统
-mount -t btrfs -o compress=zstd /dev/nvme0n1p2 /mnt
+mount -t btrfs -o compress=zstd /dev/nvme0n1p3 /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 # 想要挂载子卷, 必须先卸载子卷所属的文件系统
 umount /mnt
 # 将子卷@挂载到/mnt上
-mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
+mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p3 /mnt
 mkdir /mnt/home
 # 将子卷@home挂载到/mnt/home上
-mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
+mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p3 /mnt/home
 mkdir -p /mnt/efi
 # 将/dev/nvme0n1p1挂载到/mnt/efi上
 mount /dev/nvme0n1p1 /mnt/efi
+swapon /dev/nvme0n1p2
 df -h
 ```
 
@@ -265,20 +269,13 @@ echo "wenzexu ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod 400 sudoers
 ```
 
-### 安装VMware工具
+### 安装VMware工具(可选)
 
 ```bash
 pacman -S open-vm-tools
 systemctl enable vmtoolsd
 systemctl enable vmware-vmblock-fuse
 pacman -S gtkmm3
-reboot
-```
-
-### 安装UTM工具
-
-```bash
-pacman -S spice-vdagent
 reboot
 ```
 
@@ -292,4 +289,10 @@ sudo pacman -S --needed --noconfirm wget
 wget -O setup.sh "https://raw.githubusercontent.com/ricolxwz/awesome-scripts/master/arch/setup.sh"
 chmod a+x setup.sh
 ./setup.sh
+```
+
+### 启用蓝牙
+
+```bash
+sudo systemctl enable --now bluetooth
 ```
