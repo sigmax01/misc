@@ -46,9 +46,9 @@ Archlinux可能常常会出现滚坏的问题, 问题可能出在内核上. 这�
 
 1. UEFI固件启动: 当你按下电源键之后, UEFI固件开始运行并执行硬件自检和初始化. 完成这些任务后, UEFI会从EFI系统分区(ESP)中寻找可启动的EFI可执行文件. 这个EFI分区通常会被挂载文件系统中的`/efi`或者`/boot/efi`下, 可执行文件如`/efi/EFI/grub/grubx64.efi`
 2. 执行GRUB: UEFI固件加载并执行GRUB的EFI可执行文件`grubx64.efi`, GRUB开始运行, 并加载其配置文件, 位于`/boot/grub/grub.cfg`. 注意`/etc/default/grub`是GRUB的全局配置文件, 用于定义实际GRUB配置文件`/boot/grub/grub.cfg`的参数. `/boot/grub/grub.cfg`是GRUB实际使用的配置文件, 用于引导操作系统, 如果你要更改GRUB配置, 应该编辑`/etc/default/grub`, 然后使用命令生成新的`grub.cfg`. 这个配置文件定义了可用的内核选项和其他引导参数, GRUB显示启动菜单, 允许你选择要启动的操作系统和内核版本
-3. 加载: 根据在GRUB的选择, GRUB将加载Linux内核和initramfs, 内核开始运行并初始化系统的硬件, 此时, 内核使用initramfs作为临时根文件系统, initramfs会加载必要的系统模块, 驱动程序, (如zfs模块, 内核没有这个模块, 必须要借助initramfs中包含的模块来启动; 如ext4不需要用到initramfs; 若根文件系统位于LVM逻辑卷, 加密卷, 或者RAID阵列上, 也需要initramfs中的相应模块). initramfs会尝试识别并挂载实际的根文件系统, 挂载成功后, initramfs会使用`switch_root`或`pivot_root`命令, 将系统的根文件系统从initramfs切换到实际的根文件系统, 之后, 内核将控制权移交给系统中的`init`进程
+3. 加载: 根据在GRUB的选择, GRUB将加载Linux内核(如`/boot/vmlinuz-linux-lts`)和initramfs(如`/boot/initramfs-linux-lts.img`), 内核开始运行并初始化系统的硬件, 此时, 内核使用initramfs作为临时根文件系统, initramfs会加载必要的系统模块, 驱动程序, (如zfs模块, 内核没有这个模块, 必须要借助initramfs中包含的模块来启动; 如ext4不需要用到initramfs; 若根文件系统位于LVM逻辑卷, 加密卷, 或者RAID阵列上, 也需要initramfs中的相应模块). initramfs会尝试识别并挂载实际的根文件系统, 挂载成功后, initramfs会使用`switch_root`或`pivot_root`命令, 将系统的根文件系统从initramfs切换到实际的根文件系统, 之后, 内核将控制权移交给系统中的`init`进程
     ::: tip
-    `mkinitcpio`提供了一种模块化的方式来创建initramfs. 通过配置文件`/etc/mkinitcpio.conf`, 用户可以选择哪些模块和钩子应该包含在initramfs中
+    `mkinitcpio`提供了一种模块化的方式来创建initramfs. 通过配置文件`/etc/mkinitcpio.conf`, 用户可以选择哪些模块和钩子应该包含在initramfs中. 当你安装或更新内核的时候, 或者手动触发`mkinitcpio -p linux-lts`命令的时候, `mkinitcpio`会被调用来重新生成`/boot/initramfs-linux-lts.img`文件, 这样是为了确保initramfs包含了所有最新的必要驱动和功能, 从而支持系统的顺利启动.
     ::: details 当前Archlinux的`mkinitcpio`文件
     ```
     # vim:set ft=sh
