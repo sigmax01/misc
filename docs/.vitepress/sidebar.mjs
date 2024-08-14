@@ -8,6 +8,12 @@ export const sidebar = {
       text: "问题",
       items: [{ text: "声音卡顿", link: "/os/linux/archlinux/voice-frozen" }],
     },
+    {
+      text: "提示",
+      items: [
+        { text: "内核安装更换", link: "/os/linux/archlinux/kernel-install" },
+      ],
+    },
   ],
   "/software/desktop/kde/": [
     {
