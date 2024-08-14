@@ -27,7 +27,7 @@ Archlinux可能常常会出现滚坏的问题, 问题可能出在内核上. 这�
     ```bash
     sudo pacman -S linux-lts linux-lts-headers
     ```
-2. 更新initramft
+2. 更新initramft, 通常在安装内核的时候已经自动触发, 但是以防万一, 再运行一次
     ```bash
     sudo mkinitcpio -p linux-lts
     ```
