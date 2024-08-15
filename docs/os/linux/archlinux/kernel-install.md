@@ -1,5 +1,5 @@
 ---
-title: Archlinux 内核安装更换
+title: Archlinux内核安装更换
 layout: doc
 navbar: true
 sidebar: true

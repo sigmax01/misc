@@ -1,5 +1,5 @@
 ---
-title: Archlinux 声音卡顿问题
+title: Archlinux声音卡顿问题
 layout: doc
 navbar: true
 sidebar: true
