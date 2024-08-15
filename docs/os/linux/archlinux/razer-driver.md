@@ -14,4 +14,7 @@ footer: true
 
 ```bash
 sudo pacman -S openrazer-daemon
+sudo gpasswd -a $USER plugdev
+yay -S polychromatic
+sudo reboot
 ```
