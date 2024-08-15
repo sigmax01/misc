@@ -6,7 +6,13 @@ export const sidebar = {
     },
     {
       text: "问题",
-      items: [{ text: "声音卡顿", link: "/os/linux/archlinux/voice-frozen" }],
+      items: [
+        { text: "声音卡顿", link: "/os/linux/archlinux/voice-frozen" },
+        {
+          text: "Zed编辑器无法启动问题",
+          link: "/os/linux/archlinux/zed-cannot-start",
+        },
+      ],
     },
     {
       text: "提示",
