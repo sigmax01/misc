@@ -18,6 +18,10 @@ export const sidebar = {
       text: "提示",
       items: [
         { text: "内核安装更换", link: "/os/linux/archlinux/kernel-install" },
+        {
+          text: "雷蛇驱动安装",
+          link: "/os/linux/archlinux/razer-driver",
+        },
       ],
     },
   ],
