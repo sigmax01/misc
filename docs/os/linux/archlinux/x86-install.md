@@ -89,7 +89,7 @@ mount -t btrfs -o /dev/nvme0n1p3 /mnt
 # 创建子卷
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@snapshots
+# btrfs subvolume create /mnt/@snapshots
 # 由于顶级子卷占据着/mnt目录, 所以需要先卸载才能挂载@子卷到/mnt
 umount /mnt
 # 将子卷@挂载到/mnt上
@@ -98,8 +98,8 @@ mount -t btrfs -o subvol=/@ /dev/nvme0n1p3 /mnt
 mkdir /mnt/home
 mount -t btrfs -o subvol=/@home /dev/nvme0n1p3 /mnt/home
 # 将子卷@snapshots挂载到/mnt/.snapshots上
-mkdir /mnt/.snapshots
-mount -t btrfs -o subvol=/@snapshots /dev/nvme0n1p3 /mnt/.snapshots
+# mkdir /mnt/.snapshots
+# mount -t btrfs -o subvol=/@snapshots /dev/nvme0n1p3 /mnt/.snapshots
 # 将顶级子卷(默认子卷ID为5)挂载到/mnt/.btrfsroot上, 方便从文件系统查看顶级子卷情况
 mkdir /mnt/.btrfsroot
 mount -t btrfs -o subvolid=5 /mnt/.btrfsroot
