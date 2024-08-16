@@ -29,5 +29,9 @@ Archlinux是一个简洁的操作系统, 这是因为它从安装到管理, 放�
     - ✅ [X86安装](/os/linux/archlinux/x86-install)
 - ✅ 问题
     - ✅ [声音卡顿](/os/linux/archlinux/voice-frozen)
+    - ✅ [Zed编辑器无法启动问题](/os/linux/archlinux/zed-cannot-start)
+    - ✅ [Thinkbook下没有声音问题 ](/os/linux/archlinux/no-sound-under-thinkbook)
 - ✅ 提示
     - ✅ [内核安装更换](/os/linux/archlinux/kernel-install)
+    - ✅ [雷蛇驱动安装](/os/linux/archlinux/razer-driver)
+    - ✅ [快照](/os/linux/archlinux/snapshots)

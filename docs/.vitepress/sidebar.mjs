@@ -12,6 +12,10 @@ export const sidebar = {
           text: "Zed编辑器无法启动问题",
           link: "/os/linux/archlinux/zed-cannot-start",
         },
+        {
+          text: "Thinkbook下没有声音问题",
+          link: "/os/linux/archlinux/no-sound-under-thinkbook",
+        },
       ],
     },
     {
