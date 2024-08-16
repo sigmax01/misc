@@ -10,7 +10,7 @@ export const sidebar = {
         { text: "声音卡顿", link: "/os/linux/archlinux/voice-frozen" },
         {
           text: "Zed编辑器无法启动问题",
-          link: "/os/linux/archlinux/zed-catnot-start",
+          link: "/os/linux/archlinux/zed-cannot-start",
         },
       ],
     },
@@ -58,6 +58,10 @@ export const sidebar = {
         {
           text: "无法找到共享文件夹",
           link: "/software/vmtools/vmware/shared-cannot-find",
+        },
+        {
+          text: "鼠标滚动迟缓",
+          link: "/software/vmtools/vmware/mouse-scroll-delay",
         },
       ],
     },
