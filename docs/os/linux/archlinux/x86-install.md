@@ -309,3 +309,15 @@ chmod a+x setup.sh
 ```bash
 sudo systemctl enable --now bluetooth
 ```
+
+### 电源管理方案
+
+```bash
+sudo pacman -S power-profiles-daemon
+```
+
+### 安装Pipewire
+
+```bash
+sudo pacman -S pipewire-pulse pipewire-alsa pipewire-jack
+```
