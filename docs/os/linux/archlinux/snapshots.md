@@ -145,7 +145,7 @@ Btrfs支持透明和自动数据压缩, 文件写入的时候会自动压缩, �
 
 当点击备份的时候, Timeshift会将当前系统的文件树复制一份, 作为一个和被备份子卷名称相同的子卷放入到timeshift自己的文件夹中, 如`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`, 这是一个子卷, 这个子卷和`@`和`@home`都是平行的, 即都是顶层子卷的子子卷, 假设此时`@home`的ID是`270`, `timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的ID是`273`.
 
-当选择这个子卷`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`回滚的时候, Timeshift会将当前的子卷`@home`替换掉, 文件树替换成`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`这个子卷的文件树, 注意此时, `@home`的ID是`274`, `timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的ID是`273`, 说明`@home`是`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的一个复制. 除此之外, Timeshift还会生成一个回滚前的快照(这个快照是自动拍摄的, 不需要手动干预), 将快照前的`@home`, 即ID为`270`的那个子卷的文件树复制一份, 放在ID为`270`的`timeshift-btrfs/snapshots/2024-08-16_19-06-50/@home`中. 在未重启之前, `@home`还是没有回滚的, 重启之后, `@home`就变成了替换后的子卷了.
+当选择这个子卷`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`回滚的时候, Timeshift会将当前的子卷`@home`替换掉, 文件树替换成`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`这个子卷的文件树, 注意此时, `@home`的ID是`274`, `timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的ID是`273`, 说明`@home`是`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的一个复制. 除此之外, Timeshift还会生成一个回滚前的快照(这个快照是自动拍摄的, 不需要手动干预), 将快照前的`@home`, 即ID为`270`的那个子卷的文件树复制一份, 放在ID为`270`的`timeshift-btrfs/snapshots/2024-08-16_19-06-50/@home`中. 在未重启之前, 系统使用的就是这个自动生成的ID为`270`的快照`timeshift-btrfs/snapshots/2024-08-16_19-06-50/@home`, 所以当你要去删除`timeshift-btrfs/snapshots/2024-08-16_19-06-50/@home`的时候, 系统会提示你无法删除正在使用的快照; 重启之后, 如果按照下面说的配置的话, 会使用ID为`274`的快照.
 
 ::: warning
 Timeshift不会修改`@home`的子卷ID为`274`, 还是回滚前的`270`, 在`/etc/fstab`文件中, 会有几种情况:
