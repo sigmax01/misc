@@ -85,7 +85,7 @@ df -h
 
 ```bash
 # 为了创建子卷, 必须先挂载子卷所属的顶级子卷
-mount -t btrfs -o /dev/nvme0n1p3 /mnt
+mount -t btrfs /dev/nvme0n1p3 /mnt
 # 创建子卷
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
