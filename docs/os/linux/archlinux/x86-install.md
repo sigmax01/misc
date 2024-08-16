@@ -102,7 +102,7 @@ mount -t btrfs -o subvol=/@home /dev/nvme0n1p3 /mnt/home
 # mount -t btrfs -o subvol=/@snapshots /dev/nvme0n1p3 /mnt/.snapshots
 # 将顶级子卷(默认子卷ID为5)挂载到/mnt/.btrfsroot上, 方便从文件系统查看顶级子卷情况
 mkdir /mnt/.btrfsroot
-mount -t btrfs -o subvolid=5 /mnt/.btrfsroot
+mount -t btrfs -o subvolid=5 /dev/nvme0n1p3 /mnt/.btrfsroot
 # 将/dev/nvme0n1p1挂载到/mnt/efi上
 mkdir -p /mnt/efi
 mount /dev/nvme0n1p1 /mnt/efi
