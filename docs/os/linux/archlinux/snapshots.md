@@ -159,3 +159,11 @@ Timeshift不会修改`@home`的子卷ID为`274`, 还是回滚前的`270`, 在`/e
 ### 提示
 
 Timeshift只支持Ubuntu式的名称为`@`和`@home`的子卷备份, 其他的子卷名称都无法使用, 而且必须是`@`和`@home`这样的子卷结构, 所以, 还是按照它的来吧...
+
+### 问题
+
+安装之后, 如果Timeshift没有自动备份, 需要手动开启`croine`服务:
+
+```bash
+sudo systemctl enable --now cronie.service
+```
