@@ -22,6 +22,10 @@ export const sidebar = {
           text: "雷蛇驱动安装",
           link: "/os/linux/archlinux/razer-driver",
         },
+        {
+          text: "快照",
+          link: "/os/linux/archlinux/snapshots",
+        },
       ],
     },
   ],
