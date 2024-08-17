@@ -35,3 +35,4 @@ Archlinux是一个简洁的操作系统, 这是因为它从安装到管理, 放�
     - ✅ [内核安装更换](/os/linux/archlinux/kernel-install)
     - ✅ [雷蛇驱动安装](/os/linux/archlinux/razer-driver)
     - ✅ [快照](/os/linux/archlinux/snapshots)
+    - ✅ [配置触控板](/os/linux/archlinux/configure-touchpad)

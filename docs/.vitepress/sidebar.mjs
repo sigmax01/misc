@@ -30,6 +30,10 @@ export const sidebar = {
           text: "快照",
           link: "/os/linux/archlinux/snapshots",
         },
+        {
+          text: "配置触控板",
+          link: "/os/linux/archlinux/configure-touchpad",
+        },
       ],
     },
   ],
