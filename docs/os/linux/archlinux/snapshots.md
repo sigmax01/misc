@@ -73,7 +73,8 @@ btrfs subvolume create /mnt/home/@vms
 这个`@vms`子卷是不需要挂载的, 因为Btrfs会将当前子卷下面的所有子子卷自动挂载. 
 
 ::: tip
-这个时候, 如果为`@home`创建快照, 虽然`@home`下嵌套着`@vms`, 但是快照中不会包含`@vms`中的内容, 因为Btrfs的快照功能是基于子卷独立的, 每个子卷的快照只会捕获该子卷当前的状态, 不会自动包含嵌套在其中的其他子卷. 
+- 这个时候, 如果为`@home`创建快照, 虽然`@home`下嵌套着`@vms`, 但是快照中不会包含`@vms`中的内容, 因为Btrfs的快照功能是基于子卷独立的, 每个子卷的快照只会捕获该子卷当前的状态, 不会自动包含嵌套在其中的其他子卷. 
+- 可以通过`btrfs subvolume list /`查看子卷之间的平行, 嵌套信息, 其中的`top level`参数表示了这一层关系, `top level`为`5`说明子卷在顶层子卷下. 
 :::
 
 #### 删除子卷
@@ -202,6 +203,8 @@ Timeshift不会修改`@home`的子卷ID为`274`, 还是回滚前的`270`, 在`/e
 
 得出结论: 在`/etc/fstab`中, 若你要使用Timeshift, 只能写子卷名, 而不是子卷ID.
 :::
+
+Timeshift在创建子卷的时候, 创建的都是平行子卷, 即`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`这种子卷的`top level`都是`5`. 这是怎么实现的呢? Timesshift会通过`subvolid=5`临时挂载顶层子卷到`/run`下的某一个文件夹, 如`/run/timeshift/1708/backup`, 然后将快照拍摄到这个文件夹下`timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`, 这样就创建了一个平行子卷, `timeshift-btrfs/snapshots/2024-08-16_19-06-11/@home`的`top level`就是`5`.
 
 ### 提示
 
