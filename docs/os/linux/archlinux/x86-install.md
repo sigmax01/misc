@@ -133,10 +133,6 @@ pacstrap /mnt btrfs-progs
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### 修改fstab文件(若要使用Btrfs, Timeshift)
-
-修改`/mnt/etc/fstab`文件, 在子卷的挂载选项中, 除了顶层子卷即`subvolid=5`保留之外, 将其他的所有`subvolid=<value>`的键值对都删去, 只剩下`subvol=<path>`, 这是因为Timeshift不会在回滚后自动更新`subvolid`, 会导致直接无法启动, 具体请见[这里](/os/linux/archlinux/snapshots#timeshift不会自动更新子卷id).
-
 ### chroot
 
 ```bash
@@ -235,6 +231,10 @@ vim /etc/pacman.conf
 # 去掉[multilib]一节中的注释
 pacman -Syyu
 ```
+
+### 修改fstab文件(若要使用Btrfs, Timeshift)
+
+修改`/mnt/etc/fstab`文件, 在子卷的挂载选项中, 除了顶层子卷即`subvolid=5`保留之外, 将其他的所有`subvolid=<value>`的键值对都删去, 只剩下`subvol=<path>`, 这是因为Timeshift不会在回滚后自动更新`subvolid`, 会导致直接无法启动, 具体请见[这里](/os/linux/archlinux/snapshots#timeshift不会自动更新子卷id).
 
 ### 安装KDE
 
