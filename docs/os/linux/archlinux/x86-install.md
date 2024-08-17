@@ -122,7 +122,7 @@ pacman -S archlinux-keyring
 
 ```bash
 pacstrap /mnt base base-devel linux linux-headers linux-firmware
-pacstrap /mnt dhcpcd iwd vi vim sudo bash-completion
+pacstrap /mnt networkmanager dhcpcd iwd vi vim sudo bash-completion
 # 如果使用了timeshift
 pacstrap /mnt btrfs-progs
 ```
@@ -211,14 +211,9 @@ reboot
 ### 测试网络
 
 ```bash
-systemctl enable --now dhcpcd
+systemctl enable --now NetworkManager
+# systemctl enable --now dhcpcd
 curl cip.cc
-```
-
-### 升级所有包
-
-```bash
-pacman -Syu
 ```
 
 ### 创建用户
