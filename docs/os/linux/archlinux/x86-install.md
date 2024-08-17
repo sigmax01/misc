@@ -93,10 +93,10 @@ btrfs subvolume create /mnt/@home
 # 由于顶级子卷占据着/mnt目录, 所以需要先卸载才能挂载@子卷到/mnt
 umount /mnt
 # 将子卷@挂载到/mnt上
-mount -t btrfs -o subvol=/@ /dev/nvme0n1p3 /mnt
+mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p3 /mnt
 # 将子卷@home挂载到/mnt/home上
 mkdir /mnt/home
-mount -t btrfs -o subvol=/@home /dev/nvme0n1p3 /mnt/home
+mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p3 /mnt/home
 # 将子卷@snapshots挂载到/mnt/.snapshots上
 # mkdir /mnt/.snapshots
 # mount -t btrfs -o subvol=/@snapshots /dev/nvme0n1p3 /mnt/.snapshots
