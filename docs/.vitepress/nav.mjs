@@ -36,16 +36,7 @@ export const nav = [
       },
       {
         text: "杂七杂八",
-        items: [
-          {
-            text: "Alist",
-            link: "/software/misc/alist/",
-          },
-          {
-            text: "SSH",
-            link: "/software/misc/ssh/",
-          },
-        ],
+        link: "/software/misc/",
       },
     ],
   },

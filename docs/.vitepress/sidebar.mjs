@@ -62,6 +62,15 @@ export const sidebar = {
         },
       ],
     },
+    {
+      text: "Cloudflare",
+      items: [
+        {
+          text: "R2对象存储防盗链",
+          link: "/software/misc/cloudflare/r2-waf",
+        },
+      ],
+    },
   ],
   "/software/vmtools/vmware/": [
     {
