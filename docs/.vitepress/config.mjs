@@ -62,7 +62,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: "https://github.com/ricolxwz/misc/edit/main/docs/:path",
+      pattern: "https://github.com/ricolxwz/misc/edit/master/docs/:path",
       text: "在 GitHub 上编辑此页面",
     },
     docFooter: {
