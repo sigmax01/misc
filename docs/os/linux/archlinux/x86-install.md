@@ -111,17 +111,10 @@ swapon /dev/nvme0n1p2
 df -h
 ```
 
-### 更新keyring
-
-```bash
-pacman -Sy
-pacman -S archlinux-keyring
-```
-
 ### 系统安装
 
 ```bash
-pacstrap /mnt base base-devel linux linux-headers linux-firmware
+pacstrap /mnt base base-devel linux linux-headers linux-firmware archlinux-keyring
 pacstrap /mnt networkmanager dhcpcd iwd vi vim sudo bash-completion
 # 如果使用了timeshift
 pacstrap /mnt btrfs-progs
