@@ -41,6 +41,10 @@ export const nav = [
             text: "Alist",
             link: "/software/misc/alist/",
           },
+          {
+            text: "SSH",
+            link: "/software/misc/ssh/",
+          },
         ],
       },
     ],

@@ -48,8 +48,17 @@ export const sidebar = {
       text: "Alist",
       items: [
         {
-          text: "无法预览pdf",
+          text: "无法预览PDF",
           link: "/software/misc/alist/cannot-preview-pdf",
+        },
+      ],
+    },
+    {
+      text: "SSH",
+      items: [
+        {
+          text: "使用谷歌验证器2FA",
+          link: "/software/misc/ssh/use-google-2fa",
         },
       ],
     },

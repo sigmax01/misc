@@ -1,5 +1,5 @@
 ---
-title: 无法预览pdf
+title: 无法预览PDF
 layout: doc
 navbar: true
 sidebar: true
@@ -10,13 +10,13 @@ editLink: true
 footer: true
 ---
 
-# 无法预览pdf
+# 无法预览PDF
 
 使用PDF.js打开文件之后, 会出现`Message: Failed to fetch`的错误, 应该是PDF.js本身的错误.
 
 ## 解决方案
 
-将预览中的pdf项改为谷歌的预览器即可, 换成: 
+将预览中的PDF项改为谷歌的预览器即可, 换成: 
 
 ```
 "Google":"https://docs.google.com/gview?url=$e_url&embedded=true"
