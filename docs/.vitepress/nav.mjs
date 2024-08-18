@@ -34,6 +34,15 @@ export const nav = [
           },
         ],
       },
+      {
+        text: "杂七杂八",
+        items: [
+          {
+            text: "Alist",
+            link: "/software/misc/alist/",
+          },
+        ],
+      },
     ],
   },
 ];

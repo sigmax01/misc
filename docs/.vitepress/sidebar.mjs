@@ -43,6 +43,17 @@ export const sidebar = {
       link: "/software/desktop/kde/config",
     },
   ],
+  "/software/misc/": [
+    {
+      text: "Alist",
+      items: [
+        {
+          text: "无法预览pdf",
+          link: "/software/misc/alist/cannot-preview-pdf",
+        },
+      ],
+    },
+  ],
   "/software/vmtools/vmware/": [
     {
       text: "优化",
