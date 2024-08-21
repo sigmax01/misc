@@ -51,7 +51,7 @@ md5p() {
         fi
         mv "$latest_file" /home/wenzexu/Desktop/"$new_name"
         echo "Renamed $latest_file to $new_name"
-        echo -n "https://img.ricolxlwz.io/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
+        echo -n "https://img.ricolxwz.io/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
         echo "New filename copied to clipboard: $new_name"
         cd ~
     else
