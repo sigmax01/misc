@@ -19,10 +19,17 @@ md5() {
     latest_file=$(ls -t | head -n 1)
     if [ -n "$latest_file" ]; then
         md5_hash=$(md5sum "$latest_file" | awk '{ print $1 }')
-        mv "$latest_file" "$md5_hash"
-        echo "Renamed $latest_file to $md5_hash"
-        echo -n "$md5_hash" | xclip -selection clipboard
-        echo "MD5 hash copied to clipboard: $md5_hash"
+        extension="${latest_file##*.}"
+        if [ "$latest_file" != "$extension" ]; then
+            new_name="${md5_hash}.${extension}"
+        else
+            new_name="${md5_hash}"
+        fi
+        mv "$latest_file" "$new_name"
+        echo "Renamed $latest_file to $new_name"
+        echo -n "$new_name" | xclip -selection clipboard
+        
+        echo "New filename copied to clipboard: $new_name"
     else
         echo "No files found."
     fi
