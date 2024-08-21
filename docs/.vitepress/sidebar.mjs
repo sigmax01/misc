@@ -34,6 +34,10 @@ export const sidebar = {
           text: "配置触控板",
           link: "/os/linux/archlinux/configure-touchpad",
         },
+        {
+          text: "自动重命名文件为md5",
+          link: "/os/linux/archlinux/auto-md5-generation",
+        },
       ],
     },
   ],
