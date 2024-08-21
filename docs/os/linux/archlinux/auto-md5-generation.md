@@ -28,7 +28,29 @@ md5() {
         mv "$latest_file" "$new_name"
         echo "Renamed $latest_file to $new_name"
         echo -n "$new_name" | xclip -selection clipboard
-        
+        echo "New filename copied to clipboard: $new_name"
+    else
+        echo "No files found."
+    fi
+}
+```
+
+自动生成链接:
+
+```bash
+md5p() {
+    latest_file=$(ls -t | head -n 1)
+    if [ -n "$latest_file" ]; then
+        md5_hash=$(md5sum "$latest_file" | awk '{ print $1 }')
+        extension="${latest_file##*.}"
+        if [ "$latest_file" != "$extension" ]; then
+            new_name="https://img.ricolxlwz.io/${date +%Y}/${date +%m}/${md5_hash}.${extension}"
+        else
+            new_name="https://img.ricolxlwz.io/${date +%Y}/${date +%m}/${md5_hash}"
+        fi
+        mv "$latest_file" "$new_name"
+        echo "Renamed $latest_file to $new_name"
+        echo -n "$new_name" | xclip -selection clipboard
         echo "New filename copied to clipboard: $new_name"
     else
         echo "No files found."
