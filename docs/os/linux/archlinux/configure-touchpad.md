@@ -2,11 +2,11 @@
 title: 配置触控板 
 layout: doc
 navbar: true
-sidebar: false
-aside: false
-outline: 2
-lastUpdated: false
-editLink: false
+sidebar: true
+aside: true
+outline: deep
+lastUpdated: true
+editLink: true
 footer: true
 ---
 
