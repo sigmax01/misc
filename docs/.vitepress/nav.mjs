@@ -35,6 +35,15 @@ export const nav = [
         ],
       },
       {
+        text: "开发软件",
+        items: [
+          {
+            text: "Jetbrains",
+            link: "/software/dev/jetbrains",
+          },
+        ],
+      },
+      {
         text: "杂七杂八",
         link: "/software/misc/",
       },

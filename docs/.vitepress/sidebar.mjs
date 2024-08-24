@@ -76,6 +76,17 @@ export const sidebar = {
       ],
     },
   ],
+  "/software/dev/jetbrains": [
+    {
+      text: "问题",
+      items: [
+        {
+          text: "无法调整MD单元格内的文字大小",
+          link: "/software/dev/jetbrains/cannot-addjust-font-in-md-cell",
+        },
+      ],
+    },
+  ],
   "/software/vmtools/vmware/": [
     {
       text: "优化",
