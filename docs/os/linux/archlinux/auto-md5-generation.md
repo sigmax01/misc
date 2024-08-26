@@ -39,6 +39,7 @@ md5() {
 
 ```bash
 md5p() {
+    current_dir=$(pwd)
     cd /home/wenzexu/Pictures/屏幕截图
     latest_file=$(ls -t | head -n 1)
     if [ -n "$latest_file" ]; then
@@ -53,7 +54,7 @@ md5p() {
         echo "Renamed $latest_file to $new_name"
         echo -n "https://img.ricolxwz.io/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
         echo "New filename copied to clipboard: $new_name"
-        cd ~
+        cd $current_dir
     else
         echo "No files found."
     fi
