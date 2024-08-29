@@ -17,8 +17,6 @@ cd /root
 curl https://get.acme.sh | sh
 read -p "Enter email: " email
 read -p "Enter domain: " domain
-read -p "Enter port: " port
-read -p "Enter wspath: " path
 echo "Please choose an SSL provider:"
 options=("letsencrypt" "buypass" "zerossl" "ssl.com" "google")
 select opt in "${options[@]}"
