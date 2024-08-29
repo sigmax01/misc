@@ -95,6 +95,17 @@ export const sidebar = {
       ],
     },
   ],
+  "/software/vpn/": [
+    {
+      text: "实用小脚本",
+      items: [
+        {
+          text: "申请证书",
+          link: "/software/vpn/apply-cert",
+        },
+      ],
+    },
+  ],
   "/software/vmtools/vmware/": [
     {
       text: "优化",

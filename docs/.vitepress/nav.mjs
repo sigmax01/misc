@@ -44,6 +44,15 @@ export const nav = [
         ],
       },
       {
+        text: "科学上网",
+        items: [
+          {
+            text: "Xray",
+            link: "/software/vpn/xray",
+          },
+        ],
+      },
+      {
         text: "杂七杂八",
         link: "/software/misc/",
       },
