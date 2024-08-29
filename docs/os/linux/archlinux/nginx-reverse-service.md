@@ -13,10 +13,9 @@ footer: true
 # Nginx反代小服务
 
 ```
-user www-data;
+user http;
 worker_processes auto;
-pid /run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
+worker_cpu_affinity auto;
 events {
         worker_connections 768;
         # multi_accept on;
@@ -34,17 +33,17 @@ server {
         ssl_protocols         TLSv1.2 TLSv1.3;
         ssl_ciphers           ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
         ssl_prefer_server_ciphers off;
-        location <path1> {
-                proxy_pass http://127.0.0.1:<port1>; 
-                proxy_set_header Host \x24host;
-                proxy_set_header X-Real-IP \x24remote_addr;
-                proxy_set_header X-Forwarded-For \x24proxy_add_x_forwarded_for;
+        location <path> {
+                proxy_pass http://127.0.0.1:<port>; 
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
 }
 server {
         listen 80;
         server_name <domain>;
-        rewrite ^(.*)\x24 https://\x24{server_name}\x241 permanent;
+        rewrite ^(.*)$ https://${server_name}$1 permanent;
 }
 }
 ```
