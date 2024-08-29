@@ -51,9 +51,10 @@ do
     esac
 done
 echo "You have selected: $opt"
+mkdir -p ~/ssl
 ~/.acme.sh/acme.sh --register-account -m $email
 ~/.acme.sh/acme.sh --issue -d $domain --standalone
-~/.acme.sh/acme.sh --installcert -d $domain --key-file ~/private.key --fullchain-file ~/cert.crt
+~/.acme.sh/acme.sh --installcert -d $domain --key-file ~/ssl/private.key --fullchain-file ~/ssl/cert.crt
 ```
 
 ## 参考资料
