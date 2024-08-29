@@ -25,7 +25,7 @@ http {
 server {
         listen 443 ssl;
         listen [::]:443 ssl;
-        server_name $domain;
+        server_name <domain>;
         ssl_certificate       /home/wenzexu/ssl/cert.crt;
         ssl_certificate_key   /home/wenzexu/ssl/private.key;
         ssl_session_timeout 1d;
@@ -43,7 +43,7 @@ server {
 }
 server {
         listen 80;
-        server_name $domain;
+        server_name <domain>;
         rewrite ^(.*)\x24 https://\x24{server_name}\x241 permanent;
 }
 }
