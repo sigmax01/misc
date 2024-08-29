@@ -38,3 +38,4 @@ Archlinux是一个简洁的操作系统, 这是因为它从安装到管理, 放�
     - ✅ [配置触控板](/os/linux/archlinux/configure-touchpad)
     - ✅ [自动重命名文件为md5](/os/linux/archlinux/auto-md5-generation)
     - ✅ [申请SSL证书](/os/linux/archlinux/apply-cert)
+    - ✅ [Nginx反代小服务](/os/linux/archlinux/nginx-reverse-service)

@@ -42,6 +42,10 @@ export const sidebar = {
           text: "申请SSL证书",
           link: "/os/linux/archlinux/apply-cert",
         },
+        {
+          text: "Nginx反代小服务",
+          link: "/os/linux/archlinux/nginx-reverse-service",
+        },
       ],
     },
   ],
