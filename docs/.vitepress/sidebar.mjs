@@ -102,6 +102,10 @@ export const sidebar = {
           text: "美化",
           link: "/software/misc/nezha/beautify",
         },
+        {
+          text: "DDNS",
+          link: "/software/misc/nezha/ddns",
+        },
       ],
     },
   ],
