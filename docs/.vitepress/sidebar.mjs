@@ -98,6 +98,10 @@ export const sidebar = {
           text: "Telegram机器人通知",
           link: "/software/misc/nezha/telebot",
         },
+        {
+          text: "美化",
+          link: "/software/misc/nezha/beautify",
+        },
       ],
     },
   ],
