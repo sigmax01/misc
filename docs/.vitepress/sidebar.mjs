@@ -94,6 +94,10 @@ export const sidebar = {
           text: "数据迁移",
           link: "/software/misc/nezha/migrate",
         },
+        {
+          text: "Telegram机器人通知",
+          link: "/software/misc/nezha/telebot",
+        },
       ],
     },
   ],
