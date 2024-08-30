@@ -52,7 +52,7 @@ do
     esac
 done
 echo "You have selected: $opt"
-~/.acme.sh/acme.sh --register-account -m $email
-~/.acme.sh/acme.sh --issue -d $domain --standalone
-~/.acme.sh/acme.sh --installcert -d $domain --key-file /root/private.key --fullchain-file /root/cert.crt
+/root/.acme.sh/acme.sh --register-account -m $email
+/root/.acme.sh/acme.sh --issue -d $domain --standalone
+/root/.acme.sh/acme.sh --installcert -d $domain --key-file /root/private.key --fullchain-file /root/cert.crt
 ```
