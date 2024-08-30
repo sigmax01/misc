@@ -28,6 +28,28 @@ footer: true
 curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
+```
+哪吒监控管理脚本 v0.18.3
+--- https://github.com/naiba/nezha ---
+1.  安装面板端
+2.  修改面板配置
+3.  启动面板
+4.  停止面板
+5.  重启并更新面板
+6.  查看面板日志
+7.  卸载管理面板
+————————————————-
+8.  安装监控Agent
+9.  修改Agent配置
+10. 查看Agent日志
+11. 卸载Agent
+12. 重启Agent
+————————————————-
+13. 更新脚本
+————————————————-
+0.  退出脚本
+```
+
 1. 选择独立安装, 安装面板端
 2. OAuth2提供商选择github
 3. Client ID输入保存的Client ID
