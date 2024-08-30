@@ -46,6 +46,7 @@ curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -
 注意, 申请证书之前先暂停Nginx并确保防火墙80打开.
 
 ```bash
+apt install cron socat -y
 cd /root
 curl https://get.acme.sh | sh
 read -p "Enter email: " email
