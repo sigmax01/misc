@@ -37,6 +37,8 @@ curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -
 7. 输入访问端口
 8. 输入Agent的通信端口
 
+之后可以通过直接`./nezha.sh`执行脚本.
+
 ## 设置SSL
 
 ### 申请证书
@@ -152,3 +154,7 @@ server {
 1. 首先在管理面板中添加一台服务器
 2. 点击新添加的服务器旁边的绿色Linux按钮, 复制一键安装指令
 3. 在被控服务器中运行复制的一键安装命令, 等待安装完成后返回到面板主页查看是否上线
+
+### 防火墙
+
+确保打开面板服务器的`5555`端口.

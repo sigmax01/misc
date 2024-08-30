@@ -90,6 +90,10 @@ export const sidebar = {
           text: "部署探针",
           link: "/software/misc/nezha/install",
         },
+        {
+          text: "数据迁移",
+          link: "/software/misc/nezha/migrate",
+        },
       ],
     },
   ],
