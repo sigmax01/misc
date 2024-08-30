@@ -13,6 +13,7 @@ footer: true
 # 申请证书
 
 ```bash
+apt install socat cron -y
 cd /root
 curl https://get.acme.sh | sh
 read -p "Enter email: " email
