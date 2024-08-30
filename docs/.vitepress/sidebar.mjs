@@ -83,6 +83,15 @@ export const sidebar = {
         },
       ],
     },
+    {
+      text: "哪吒",
+      items: [
+        {
+          text: "部署探针",
+          link: "/software/misc/nezha/install",
+        },
+      ],
+    },
   ],
   "/software/dev/jetbrains": [
     {
