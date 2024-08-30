@@ -106,6 +106,14 @@ export const sidebar = {
           text: "DDNS",
           link: "/software/misc/nezha/ddns",
         },
+        {
+          text: "告警",
+          link: "/software/misc/nezha/warning",
+        },
+        {
+          text: "服务",
+          link: "/software/misc/nezha/service",
+        },
       ],
     },
   ],

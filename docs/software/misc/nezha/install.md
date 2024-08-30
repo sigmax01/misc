@@ -166,6 +166,10 @@ server {
 
 打开[https://github.com/settings/developers](https://github.com/settings/developers), 更新面板域名`https://dashboard.example.com`, 回调域名`http://dashboard.example.com/oauth2/callback`.
 
+## 设置DDNS
+
+参考[这里](/software/misc/nezha/ddns).
+
 ## 安装Agent
 
 ### 设置通信域名
@@ -181,3 +185,19 @@ server {
 ### 防火墙
 
 确保打开面板服务器的`5555`端口.
+
+## 美化
+
+参考[这里](/software/misc/nezha/beautify).
+
+## Telegram机器人
+
+参考[这里](/software/misc/nezha/telebot).
+
+## 告警
+
+参考[这里](/software/misc/nezha/warning).
+
+## 服务
+
+参考[这里](/software/misc/nezha/service).
