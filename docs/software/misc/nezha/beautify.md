@@ -28,6 +28,7 @@ footer: true
 </style>
 <script>
 window.onload = function() {
+  document.querySelector("[rel='shortcut icon']").href = "https://img.ricolxwz.io/favicon-vitepress-noeffect-3.svg"
   var avatar = document.querySelector(".item img");
   var footer = document.querySelector("div.is-size-7");
   footer.innerHTML = "由麦旋风超好吃驱动 🚜 2024";
