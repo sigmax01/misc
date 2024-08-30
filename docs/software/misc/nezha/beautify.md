@@ -32,8 +32,9 @@ window.onload = function() {
   var footer = document.querySelector("div.is-size-7");
   footer.innerHTML = "由麦旋风超好吃驱动 🚜 2024";
   footer.style.visibility = "visible";
-  avatar.src = "https://img.ricolxwz.io/favicon-w-ffffff-doc.svg";
+  avatar.src = "https://img.ricolxwz.io/favicon-vitepress-noeffect-3.svg";
   avatar.style.visibility = "visible";
+  avatar.style.height = "90%";
 }
 </script>
 ```
