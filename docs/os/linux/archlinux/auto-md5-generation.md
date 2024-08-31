@@ -51,12 +51,11 @@ md5p() {
         fi
         cd /home/wenzexu/img
         git pull
-        mkdir -p /home/wenzexu/img/$(date +%Y)/$(date +%m)
-        mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/img/$(date +%Y)/$(date +%m)/"$new_name"
+        mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/img/"$new_name"
         git add .
-        git commit -m "Add $(date +%Y)/$(date +%m)/$new_name"
+        git commit -m "Add $new_name"
         git push origin
-        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
+        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$new_name" | xclip -selection clipboard
         cd $current_dir
     else
         echo "No files found."
@@ -80,12 +79,11 @@ md5p() {
         fi
         cd /Users/wenzexu/img
         git pull
-        mkdir -p /Users/wenzexu/img/$(date +%Y)/$(date +%m)
-        mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/img/$(date +%Y)/$(date +%m)/"$new_name"
+        mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/img/"$new_name"
         git add .
-        git commit -m "Add $(date +%Y)/$(date +%m)/$new_name"
+        git commit -m "Add $new_name"
         git push origin
-        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$(date +%Y)/$(date +%m)/$new_name" | pbcopy
+        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$new_name" | pbcopy
         cd $current_dir
     else
         echo "No files found."
