@@ -64,6 +64,36 @@ md5p() {
 }
 ```
 
+::: tip
+macOS版:
+```zsh
+md5p() {
+    current_dir=$(pwd)
+    latest_file=$(ls -t /Users/wenzexu/snip | head -n 1)
+    if [ -n "$latest_file" ]; then
+        md5_hash=$(md5sum /Users/wenzexu/snip/"$latest_file" | awk '{ print $1 }')
+        extension="${latest_file##*.}"
+        if [ "$latest_file" != "$extension" ]; then
+            new_name="${md5_hash}.${extension}"
+        else
+            new_name="${md5_hash}"
+        fi
+        cd /Users/wenzexu/img
+        git pull
+        mkdir -p /Users/wenzexu/img/$(date +%Y)/$(date +%m)
+        mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/img/$(date +%Y)/$(date +%m)/"$new_name"
+        git add .
+        git commit -m "Add $(date +%Y)/$(date +%m)/$new_name"
+        git push origin
+        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$(date +%Y)/$(date +%m)/$new_name" | pbcopy
+        cd $current_dir
+    else
+        echo "No files found."
+    fi
+}
+```
+:::
+
 ::: warning
 请确保`img`文件夹和屏幕截图文件夹已经就位, 并且xclip已经安装, 在用户目录执行下列操作:
 ```bash
