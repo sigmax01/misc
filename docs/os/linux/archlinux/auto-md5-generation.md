@@ -40,23 +40,36 @@ md5() {
 ```bash
 md5p() {
     current_dir=$(pwd)
-    cd /home/wenzexu/Pictures/屏幕截图
-    latest_file=$(ls -t | head -n 1)
+    latest_file=$(ls -t /home/wenzexu/Pictures/屏幕截图 | head -n 1)
     if [ -n "$latest_file" ]; then
-        md5_hash=$(md5sum "$latest_file" | awk '{ print $1 }')
+        md5_hash=$(md5sum /home/wenzexu/Pictures/屏幕截图/"$latest_file" | awk '{ print $1 }')
         extension="${latest_file##*.}"
         if [ "$latest_file" != "$extension" ]; then
             new_name="${md5_hash}.${extension}"
         else
             new_name="${md5_hash}"
         fi
-        mv "$latest_file" /home/wenzexu/Desktop/"$new_name"
-        echo "Renamed $latest_file to $new_name"
+        cd /home/wenzexu/img
+        git pull
+        mkdir -p /home/wenzexu/img/$(date +%Y)/$(date +%m)
+        mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/img/$(date +%Y)/$(date +%m)/"$new_name"
+        git add .
+        git commit -m "Add $new_name"
+        git push origin
         echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
-        echo "New filename copied to clipboard: $new_name"
         cd $current_dir
     else
         echo "No files found."
     fi
 }
 ```
+
+::: warning
+请确保`img`文件夹和屏幕截图文件夹已经就位, 在用户目录执行下列操作:
+```bash
+git clone gh2:sigmax0124/img.git
+cd img
+git config user.email sigmax0124@hotmail.com
+cd ..
+```
+:::
