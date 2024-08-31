@@ -55,7 +55,7 @@ md5p() {
         git add .
         git commit -m "Add $new_name"
         git push origin
-        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$new_name" | xclip -selection clipboard
+        echo -n "https://img.ricolxwz.io/$new_name" | xclip -selection clipboard
         cd $current_dir
     else
         echo "No files found."
@@ -83,7 +83,7 @@ md5p() {
         git add .
         git commit -m "Add $new_name"
         git push origin
-        echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$new_name" | pbcopy
+        echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
         cd $current_dir
     else
         echo "No files found."
