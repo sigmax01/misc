@@ -15,15 +15,7 @@ export default defineConfig({
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "/favicon-vitepress-noeffect-3.svg",
-      },
-    ],
-    [
-      "link",
-      {
-        rel: "icon",
-        type: "image/png",
-        href: "/favicon-vitepress-noeffect-3.png",
+        href: "https://cdn.jsdelivr.net/gh/ricolxwz/logo@master/favicon-mc-1.svg",
       },
     ],
   ],
@@ -41,7 +33,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/favicon-vitepress-noeffect-3.png",
+    logo: "https://cdn.jsdelivr.net/gh/ricolxwz/logo@master/favicon-mc-1.svg",
     search: {
       provider: "local",
       options: {
