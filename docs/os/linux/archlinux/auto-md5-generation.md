@@ -71,7 +71,7 @@ md5p() {
     current_dir=$(pwd)
     latest_file=$(ls -t /Users/wenzexu/snip | head -n 1)
     if [ -n "$latest_file" ]; then
-        md5_hash=$(md5sum /Users/wenzexu/snip/"$latest_file" | awk '{ print $1 }')
+        md5_hash=$(md5 -qs /Users/wenzexu/snip/"$latest_file")
         extension="${latest_file##*.}"
         if [ "$latest_file" != "$extension" ]; then
             new_name="${md5_hash}.${extension}"
