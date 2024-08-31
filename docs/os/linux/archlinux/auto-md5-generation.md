@@ -54,7 +54,7 @@ md5p() {
         mkdir -p /home/wenzexu/img/$(date +%Y)/$(date +%m)
         mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/img/$(date +%Y)/$(date +%m)/"$new_name"
         git add .
-        git commit -m "Add $new_name"
+        git commit -m "Add $(date +%Y)/$(date +%m)/$new_name"
         git push origin
         echo -n "https://cdn.jsdelivr.net/gh/sigmax0124/img@master/$(date +%Y)/$(date +%m)/$new_name" | xclip -selection clipboard
         cd $current_dir
@@ -65,7 +65,7 @@ md5p() {
 ```
 
 ::: warning
-请确保`img`文件夹和屏幕截图文件夹已经就位, 在用户目录执行下列操作:
+请确保`img`文件夹和屏幕截图文件夹已经就位, 并且xclip已经安装, 在用户目录执行下列操作:
 ```bash
 git clone gh2:sigmax0124/img.git
 cd img
