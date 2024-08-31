@@ -63,6 +63,10 @@ export const sidebar = {
           text: "无法预览PDF",
           link: "/software/misc/alist/cannot-preview-pdf",
         },
+        {
+          text: "改变Logo大小",
+          link: "/software/misc/alist/change-logo-size",
+        },
       ],
     },
     {

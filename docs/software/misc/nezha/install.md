@@ -20,6 +20,16 @@ footer: true
 2. 点击注册应用
 3. 保存页面中的Client ID, 然后点击"Generate a new client secret", 这个密钥要妥善保存
 
+## 设置交换文件
+
+```bash
+dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile  none  swap  defaults  0 0" >> /etc/fstab
+```
+
 ## 服务器中安装面板
 
 在服务器中, 运行安装脚本: 
