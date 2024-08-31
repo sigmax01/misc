@@ -120,6 +120,15 @@ export const sidebar = {
         },
       ],
     },
+    {
+      text: "Mkdocs",
+      items: [
+        {
+          text: "mkdocs-git-committers-plugin-2配置",
+          link: "/software/misc/mkdocs/git-committers2",
+        },
+      ],
+    },
   ],
   "/software/dev/jetbrains": [
     {
