@@ -48,7 +48,7 @@ md5p() {
         else
             new_name="${md5_hash}"
         fi
-        wrangler r2 object put ricolxwz-image/"$latest_file" --file=/home/wenzexu/Pictures/屏幕截图/"$latest_file"
+        wrangler r2 object put ricolxwz-image/"$new_name" --file=/home/wenzexu/Pictures/屏幕截图/"$new_name"
         echo -n "https://img.ricolxwz.io/$new_name" | xclip -selection clipboard
     else
         echo "No files found."
@@ -69,7 +69,7 @@ md5p() {
         else
             new_name="${md5_hash}"
         fi
-        wrangler r2 object put ricolxwz-image/"$latest_file" --file=/Users/wenzexu/snip/"$latest_file"
+        wrangler r2 object put ricolxwz-image/"$new_name" --file=/Users/wenzexu/snip/"$new_name"
         echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
     else
         echo "No files found."
@@ -82,6 +82,6 @@ md5p() {
 请确保屏幕截图文件夹已经就位, 并且xclip, wrangler已经安装:
 ```bash
 sudo pacman --needed --noconfirm xclip
-npm install wrangler --save-dev
+npm install -g wrangler
 ```
 :::
