@@ -39,7 +39,6 @@ md5() {
 
 ```bash
 md5p() {
-    current_dir=$(pwd)
     latest_file=$(ls -t /home/wenzexu/Pictures/屏幕截图 | head -n 1)
     if [ -n "$latest_file" ]; then
         md5_hash=$(md5sum /home/wenzexu/Pictures/屏幕截图/"$latest_file" | awk '{ print $1 }')
@@ -49,14 +48,8 @@ md5p() {
         else
             new_name="${md5_hash}"
         fi
-        cd /home/wenzexu/img
-        git pull
-        mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/img/"$new_name"
-        git add .
-        git commit -m "Add $new_name"
-        git push origin
+        wrangler r2 object put ricolxwz-image/"$latest_file" --file=/home/wenzexu/Pictures/屏幕截图/"$latest_file"
         echo -n "https://img.ricolxwz.io/$new_name" | xclip -selection clipboard
-        cd $current_dir
     else
         echo "No files found."
     fi
@@ -67,7 +60,6 @@ md5p() {
 macOS版:
 ```zsh
 md5p() {
-    current_dir=$(pwd)
     latest_file=$(ls -t /Users/wenzexu/snip | head -n 1)
     if [ -n "$latest_file" ]; then
         md5_hash=$(md5 -qs /Users/wenzexu/snip/"$latest_file")
@@ -77,14 +69,8 @@ md5p() {
         else
             new_name="${md5_hash}"
         fi
-        cd /Users/wenzexu/img
-        git pull
-        mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/img/"$new_name"
-        git add .
-        git commit -m "Add $new_name"
-        git push origin
+        wrangler r2 object put ricolxwz-image/"$latest_file" --file=/Users/wenzexu/snip/"$latest_file"
         echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
-        cd $current_dir
     else
         echo "No files found."
     fi
@@ -93,11 +79,9 @@ md5p() {
 :::
 
 ::: warning
-请确保`img`文件夹和屏幕截图文件夹已经就位, 并且xclip已经安装, 在用户目录执行下列操作:
+请确保屏幕截图文件夹已经就位, 并且xclip, wrangler已经安装:
 ```bash
-git clone gh2:sigmax0124/img.git
-cd img
-git config user.email sigmax0124@hotmail.com
-cd ..
+sudo pacman --needed --noconfirm xclip
+npm install wrangler --save-dev
 ```
 :::
