@@ -50,6 +50,7 @@ md5p() {
         fi
         mv /home/wenzexu/Pictures/屏幕截图/"$latest_file" /home/wenzexu/Pictures/屏幕截图/"$new_name"
         wrangler r2 object put ricolxwz-image/"$new_name" --file=/home/wenzexu/Pictures/屏幕截图/"$new_name"
+        wrangler r2 object put ricolxwz-image-backup/"$new_name" --file=/home/wenzexu/Pictures/屏幕截图/"$new_name"
         echo -n "https://img.ricolxwz.io/$new_name" | xclip -selection clipboard
     else
         echo "No files found."
@@ -72,6 +73,7 @@ md5p() {
         fi
         mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/snip/"$new_name"
         wrangler r2 object put ricolxwz-image/"$new_name" --file=/Users/wenzexu/snip/"$new_name"
+        wrangler r2 object put ricolxwz-image-backup/"$new_name" --file=/Users/wenzexu/snip/"$new_name"
         echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
     else
         echo "No files found."
