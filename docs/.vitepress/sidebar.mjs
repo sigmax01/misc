@@ -127,6 +127,10 @@ export const sidebar = {
           text: "mkdocs-git-committers-plugin-2配置",
           link: "/software/misc/mkdocs/git-committers2",
         },
+        {
+          text: "内嵌视频",
+          link: "/software/misc/mkdocs/video",
+        },
       ],
     },
   ],
