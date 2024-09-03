@@ -15,7 +15,7 @@ export default defineConfig({
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "https://cdn.jsdelivr.net/gh/ricolxwz/logo@master/favicon-mc-1.svg",
+        href: "https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg",
       },
     ],
   ],
@@ -33,7 +33,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "https://cdn.jsdelivr.net/gh/ricolxwz/logo@master/favicon-mc-1.svg",
+    logo: "https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg",
     search: {
       provider: "local",
       options: {
