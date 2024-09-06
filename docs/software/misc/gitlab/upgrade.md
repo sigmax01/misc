@@ -10,9 +10,9 @@ editLink: true
 footer: true
 ---
 
-首先, 进入到Portainer容器中的`docker-compose.yaml`文件所在的位置.
-
 # 升级
+
+进入到Portainer容器中的app栈的`docker-compose.yaml`文件所在的位置.
 
 1. 检查gitlab是否有问题
     1. `docker compose exec gitlab gitlab-rake gitlab:check`
