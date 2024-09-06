@@ -49,6 +49,7 @@ footer: true
     1. `docker compose exec gitlab rm /etc/gitlab/skip-auto-backup`
     2. 编辑`./app/gitlab/config/gitlab.rb`文件, 删去`nginx['custom_gitlab_server_config'] = "location ^~ /api/v4/jobs/request {\n deny all;\n return 503;\n}\n"`
 9. 更新github中的`docker-compose.yaml`文件为当前版本: gitlab和gitlab-runner
+10. 删除多余的镜像`docker rmi <镜像1>`, `docker rmi <镜像2>`, ...
 
 ## 参考资料
 
