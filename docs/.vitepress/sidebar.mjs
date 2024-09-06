@@ -57,6 +57,23 @@ export const sidebar = {
   ],
   "/software/misc/": [
     {
+      text: "Gitlab",
+      items: [
+        {
+          text: "升级",
+          link: "/software/misc/gitlab/upgrade.md",
+        },
+        {
+          text: "迁移",
+          link: "/software/misc/gitlab/migrate.md",
+        },
+        {
+          text: "runner",
+          link: "/software/misc/gitlab/runner.md",
+        },
+      ],
+    },
+    {
       text: "Alist",
       items: [
         {
