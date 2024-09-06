@@ -10,6 +10,8 @@ editLink: true
 footer: true
 ---
 
+首先, 进入到Portainer容器中的`docker-compose.yaml`文件所在的位置.
+
 # 升级
 
 1. 检查gitlab是否有问题
