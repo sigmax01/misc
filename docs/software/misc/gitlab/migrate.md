@@ -23,7 +23,8 @@ footer: true
     4. `docker compose cp gitlab:/var/opt/gitlab/backups/<_gitlab_backup.tar文件>  ./gitlab-bak/`
     5. `docker compose cp gitlab:/etc/gitlab/gitlab.rb  ./gitlab-bak/`
     6. `docker compose cp gitlab:/etc/gitlab/gitlab-secrets.json  ./gitlab-bak/`
-    6. `docker compose cp gitlab-runner:/etc/gitlab-runner/config.toml ./gitlab-runner-bak/`
+    7. `docker compose cp gitlab-runner:/etc/gitlab-runner/config.toml ./gitlab-runner-bak/`
+    8. 双重备份: `tar -czvf gitlab-aux.tar.gz ./app/gitlab`; `tar -czvf gitlab-runner-aux.tar.gz ./app/gitlab-runner`, 下载这两个文件
 4. 将`./gitlab-bak`打包为`.tar.gz`文件: `tar -czvf gitlab-bak.tar.gz gitlab-bak`
 5. 将`./gitlab-runner-bak`打包为`.tar.gz`文件: `tar -czvf gitlab-runner-bak.tar.gz gitlab-runner-bak`
 6. 在新机器上上传`gitlab-bak.tar.gz`, `gitlab-runner-bak.tar.gz`文件并解压: `tar -xzvf gitlab-bak.tar.gz && tar -xzvf gitlab-runner-bak.tar.gz`
