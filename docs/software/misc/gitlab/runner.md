@@ -12,8 +12,6 @@ footer: true
 
 # runner
 
-进入到Portainer容器中的app栈的`docker-compose.yaml`文件所在的位置, 在`/root/portainer/compose/<数字>/`下, 还有`stack.env`环境变量配置也在这里.
-
 注册一个runner: 
 
 1. 前往gitlab页面, 然后选择ci, 注册runner, 填写对应信息后获得runner的token
