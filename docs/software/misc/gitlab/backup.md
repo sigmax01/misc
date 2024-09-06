@@ -111,7 +111,8 @@ aws s3 cp /root/*-gitlab-secrets.json s3://ricolxwz-gitlab/
 aws s3 cp /root/*-gitlab.rb s3://ricolxwz-gitlab/
 rm /root/*-gitlab-secrets.json
 rm /root/*-gitlab.rb
-docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy && docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
+docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy
+docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
 ```
 
 赋予脚本执行权限: `chmod u+x /root/gitlab-backup.sh`.
