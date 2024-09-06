@@ -105,12 +105,16 @@ gitlab_rails['backup_upload_remote_directory'] = 'ricolxwz-gitlab'
 ```
 cp /root/app/gitlab/config/gitlab-secrets.json /root/gitlab-secrets.json
 cp /root/app/gitlab/config/gitlab.rb /root/gitlab.rb
+cp -r /root/app/gitlab/data/git-data /root/git-data
 mv /root/gitlab-secrets.json /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab-secrets.json
 mv /root/gitlab.rb /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab.rb
+tar -czvf /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-git-data.tar.gz /root/git-data
 aws s3 cp /root/*-gitlab-secrets.json s3://ricolxwz-gitlab/
 aws s3 cp /root/*-gitlab.rb s3://ricolxwz-gitlab/
+aws s3 cp /root/*-git-data.tar.gz s3://ricolxwz-gitlab/
 rm /root/*-gitlab-secrets.json
 rm /root/*-gitlab.rb
+rm /root/*-git-data.tar.gz
 docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy
 docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
 ```
