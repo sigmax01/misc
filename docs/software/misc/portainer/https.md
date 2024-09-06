@@ -12,65 +12,31 @@ footer: true
 
 # Https
 
-## 申请证书 
-
-最好申请一个域名复杂一点的证书, 如`7fd81929-4744-4b6e-92bf-96d2dcab880d.example.com`.
+## 自签证书
 
 ```
-export HOME=/root
-apt install socat cron -y
-cd /root
-curl https://get.acme.sh | sh
-read -p "Enter email: " email
-read -p "Enter domain: " domain
-echo "Please choose an SSL provider:"
-options=("letsencrypt" "buypass" "zerossl" "ssl.com" "google")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "letsencrypt")
-            echo "Switching to Let's Encrypt"
-            /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-            break
-            ;;
-        "buypass")
-            echo "Switching to Buypass"
-            /root/.acme.sh/acme.sh --set-default-ca --server buypass
-            break
-            ;;
-        "zerossl")
-            echo "Switching to ZeroSSL"
-            /root/.acme.sh/acme.sh --set-default-ca --server zerossl
-            break
-            ;;
-        "ssl.com")
-            echo "Switching to SSL.com"
-            /root/.acme.sh/acme.sh --set-default-ca --server ssl.com
-            break
-            ;;
-        "google")
-            echo "Switching to Google Public CA"
-            /root/.acme.sh/acme.sh --set-default-ca --server google
-            break
-            ;;
-        *) echo "Invalid option. Please try again.";;
-    esac
-done
-echo "You have selected: $opt"
 mkdir -p /root/ssl
-/root/.acme.sh/acme.sh --register-account -m $email
-/root/.acme.sh/acme.sh --issue -d $domain --standalone
-mkdir -p /root/ssl/$domain
-/root/.acme.sh/acme.sh --installcert -d $domain --key-file /root/ssl/$domain/private.key --fullchain-file /root/ssl/$domain/cert.crt
+openssl req -x509 -newkey rsa:4096 -keyout /root/ssl/portainer_private.key -out /root/ssl/portainer_cert.crt -days 365 -sha256 -nodes
 ```
 
-之后, 可以在NPM容器里面设置将`xxx.example.com`映射到`7fd81929-4744-4b6e-92bf-96d2dcab880d.example.com:9943`. 之后就可以用`xxx.example.com`访问了.
+1. 国家: CN
+2. 省份: ZJ
+3. 城市: SX
+4. 公司名称: MC
+5. Unit名称: 01
+6. Common名称: WZ
+7. 邮件: ricol.xwz@outlook.com
 
 ## 设置
 
 1. 下载刚才生成的证书和私钥到你的电脑上
 2. 在设置-General-SLL certificate, 选择force https only, 然后上传证书和密钥, 点击save, 重新刷新页面, 访问9443端口
 
+
 ## 修改密码
 
-重新登录后请尽快修改密码. 
+可以通过`<你的ip>:9443`登录, 重新登录后请尽快修改密码. 
+
+## 配置NPM
+
+之后, 可以在NPM容器里面设置将`xxx.example.com`映射到`<你的ip>:9943`. 之后就可以用`xxx.example.com`访问了.
