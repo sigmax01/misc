@@ -114,6 +114,8 @@ rm /root/*-gitlab.rb
 docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy && docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
 ```
 
+赋予脚本执行权限: `chmod u+x /root/gitlab-backup.sh`.
+
 ### 配置定时任务
 
 新建cron任务:
