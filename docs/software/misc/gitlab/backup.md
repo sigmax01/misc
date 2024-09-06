@@ -105,8 +105,8 @@ gitlab_rails['backup_upload_remote_directory'] = 'ricolxwz-gitlab'
 ```
 cp /root/app/gitlab/config/gitlab-secrets.json /root/gitlab-secrets.json
 cp /root/app/gitlab/config/gitlab.rb /root/gitlab.rb
-mv /root/gitlab-secrets.json /root/$(date +%Y)-$(date +%m)-$(date +%d)-gitlab-secrets.json
-mv /root/gitlab.rb /root/$(date +%Y)-$(date +%m)-$(date +%d)-gitlab.rb
+mv /root/gitlab-secrets.json /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab-secrets.json
+mv /root/gitlab.rb /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab.rb
 aws s3 cp /root/*-gitlab-secrets.json s3://ricolxwz-gitlab/
 aws s3 cp /root/*-gitlab.rb s3://ricolxwz-gitlab/
 rm /root/*-gitlab-secrets.json
