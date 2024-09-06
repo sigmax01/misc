@@ -12,6 +12,8 @@ footer: true
 
 # Https
 
+已经无须配置Http, 已经接入NPM.
+
 ## 自签证书
 
 ```

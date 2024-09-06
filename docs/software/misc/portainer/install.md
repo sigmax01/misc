@@ -33,7 +33,7 @@ footer: true
         networks:
           - app
           
-    portainer: # 9443 TLS 8000
+    portainer: # 9443 HTTPS 9000 HTTP
       image: portainer/portainer-ce:latest
       volumes:
         - /root/portainer:/data
