@@ -117,6 +117,10 @@ docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name
 
 赋予脚本执行权限: `chmod u+x /root/gitlab-backup.sh`.
 
+### 测试
+
+测试一下: `/root/gitlab-backup.sh`, 然后看看S3上有没有文件.
+
 ### 配置定时任务
 
 新建cron任务:
