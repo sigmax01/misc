@@ -22,6 +22,7 @@ footer: true
     4. `docker compose cp gitlab:/var/opt/gitlab/backups/<_gitlab_backup.tar文件>  ./gitlab-bak/`
     5. `docker compose cp gitlab:/etc/gitlab/gitlab.rb  ./gitlab-bak/`
     6. `docker compose cp gitlab:/etc/gitlab/gitlab-secrets.json  ./gitlab-bak/`
+    7. 双重备份: `tar -czvf gitlab-aux.tar.gz ./app/gitlab`; `tar -czvf gitlab-runner-aux.tar.gz ./app/gitlab-runner`, 下载这两个文件
 3. 确保后台没有迁移任务
     1. `docker compose exec gitlab gitlab-rails runner -e production 'puts Gitlab::BackgroundMigration.remaining'`: 这是未执行的后台迁移任务的数量
     2. `docker compose exec gitlab gitlab-rails runner -e production 'puts Gitlab::Database::BackgroundMigration::BatchedMigration.queued.count'`: 这是等待执行的批量迁移任务的数量
