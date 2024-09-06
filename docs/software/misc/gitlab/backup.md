@@ -115,6 +115,7 @@ aws s3 cp /root/*-git-data.tar.gz s3://ricolxwz-gitlab/
 rm /root/*-gitlab-secrets.json
 rm /root/*-gitlab.rb
 rm /root/*-git-data.tar.gz
+rm -rf /root/git-data
 docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy
 docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
 ```
