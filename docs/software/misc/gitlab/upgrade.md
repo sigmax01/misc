@@ -30,7 +30,7 @@ footer: true
     1. 编辑`./app/gitlab/config/gitlab.rb`文件, 新增: `nginx['custom_gitlab_server_config'] = "location ^~ /api/v4/jobs/request {\n deny all;\n return 503;\n}\n"`
     2. `docker compose exec gitlab gitlab-cli reconfigure`
     3. 再次确认是否有正在运行的runner任务
-5. 确定升级路径: https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/
+5. 确定升级路径: https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/, 请注意要选择gilab和gitlab-runner都有的最终版本号, 如gitlab有17.2.1-ce.0, gitlab-runner有v17.2.1
 6. 升级gitlab
     1. 升级postgresql数据库(可选, 一般gitlab升级的时候会自动升级postgresql)
         1. 查看gitlab版本和postgresql对应关系https://docs.gitlab.com/ee/administration/package_information/postgresql_versions.html
