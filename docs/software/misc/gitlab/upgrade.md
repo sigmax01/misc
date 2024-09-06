@@ -12,8 +12,6 @@ footer: true
 
 # 升级
 
-进入到Portainer容器中的app栈的`docker-compose.yaml`文件所在的位置, 在`/root/portainer/compose/<数字>/`下, 还有`stack.env`环境变量配置也在这里.
-
 1. 检查gitlab是否有问题
     1. `docker compose exec gitlab gitlab-rake gitlab:check`
     2. `docker compose exec gitlab gitlab-rake gitlab:geo:check`
