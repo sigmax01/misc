@@ -14,4 +14,4 @@ footer: true
 
 1. 确保app桥接网络已经创建
 2. 确保`man.yaml`文件已就位
-3. `docker compose -f man.yaml up -d`
+3. `docker compose -f /root/man.yaml up -d`

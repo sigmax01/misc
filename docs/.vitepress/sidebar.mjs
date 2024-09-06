@@ -68,6 +68,10 @@ export const sidebar = {
           link: "/software/misc/gitlab/migrate.md",
         },
         {
+          text: "备份",
+          link: "/software/misc/gitlab/backup.md",
+        },
+        {
           text: "runner",
           link: "/software/misc/gitlab/runner.md",
         },
