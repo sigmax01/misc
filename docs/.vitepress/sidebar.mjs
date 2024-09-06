@@ -74,6 +74,19 @@ export const sidebar = {
       ],
     },
     {
+      text: "Portainer",
+      items: [
+        {
+          text: "安装",
+          link: "/software/misc/portainer/install.md",
+        },
+        {
+          text: "堆",
+          link: "/software/misc/portainer/stack.md",
+        },
+      ],
+    },
+    {
       text: "Alist",
       items: [
         {
