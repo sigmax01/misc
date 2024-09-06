@@ -14,6 +14,8 @@ footer: true
 
 ## 申请证书 
 
+最好申请一个域名复杂一点的证书, 如`7fd81929-4744-4b6e-92bf-96d2dcab880d.example.com`.
+
 ```
 export HOME=/root
 apt install socat cron -y
@@ -61,6 +63,8 @@ mkdir -p /root/ssl
 mkdir -p /root/ssl/$domain
 /root/.acme.sh/acme.sh --installcert -d $domain --key-file /root/ssl/$domain/private.key --fullchain-file /root/ssl/$domain/cert.crt
 ```
+
+之后, 可以在NPM容器里面设置将`xxx.example.com`映射到`7fd81929-4744-4b6e-92bf-96d2dcab880d.example.com:9943`. 之后就可以用`xxx.example.com`访问了.
 
 ## 设置
 
