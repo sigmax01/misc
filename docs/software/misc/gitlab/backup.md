@@ -108,7 +108,7 @@ cp /root/app/gitlab/config/gitlab.rb /root/gitlab.rb
 cp -r /root/app/gitlab/data /root
 mv /root/gitlab-secrets.json /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab-secrets.json
 mv /root/gitlab.rb /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab.rb
-tar -czvf /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-data.tar.gz /root/
+tar -czvf /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-data.tar.gz /root/data
 aws s3 cp /root/*-gitlab-secrets.json s3://ricolxwz-gitlab/
 aws s3 cp /root/*-gitlab.rb s3://ricolxwz-gitlab/
 aws s3 cp /root/*-data.tar.gz s3://ricolxwz-gitlab/
