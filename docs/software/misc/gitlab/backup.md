@@ -131,5 +131,5 @@ docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name
 新建cron任务:
 
 ```
-0 0 */5 * * /root/gitlab-backup.sh
+0 0 */10 * * /root/gitlab-backup.sh
 ```
