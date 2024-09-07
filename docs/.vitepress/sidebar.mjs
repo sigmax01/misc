@@ -78,6 +78,15 @@ export const sidebar = {
       ],
     },
     {
+      text: "Github",
+      items: [
+        {
+          text: "Runner",
+          link: "/software/misc/github/runner.md",
+        },
+      ],
+    },
+    {
       text: "Portainer",
       items: [
         {
