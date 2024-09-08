@@ -46,6 +46,10 @@ export const sidebar = {
           text: "Nginx反代小服务",
           link: "/os/linux/archlinux/nginx-reverse-service",
         },
+        {
+          text: "自签证书",
+          link: "/os/linux/archlinux/self-signed-cert",
+        },
       ],
     },
   ],
