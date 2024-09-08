@@ -24,7 +24,8 @@ footer: true
 
 1. 安装`mkcert`: `sudo pacman -S nss && sudo pacman -Syu mkcert`
 2. 首先, 生成一个系统的根证书`mkcert -install`, 它会显示你的根证书的公钥已经放到系统证书库和浏览器证书库里面
-3. 然后, 创建一个具体证书: `mkcert example.com "*.example.com" example.text localhost 127.0.0.1 ::1 -cert-file /home/wenzexu/cert.crt -key-file /home/wenzexu/private.key`, 会由刚才安装的根证书进行签名, 验证的时候会沿着信任链追溯到根证书
+3. 然后, 创建一个具体证书: `mkcert -cert-file /home/wenzexu/cert.crt -key-file /home/wenzexu/private.key *.dev`, 会由刚才安装的根证书进行签名, 验证的时候会沿着信任链追溯到根证书
+4. 最后, 到系统`/etc/hosts`文件, 加一条`127.0.0.1 ml.dev`
 
 ::: tip
 手动将根证书的公钥导入到浏览器中.
