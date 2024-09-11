@@ -19,4 +19,4 @@ prev: false
 - ✅ [备份](/software/gitlab/backup)
 - ✅ [迁移](/software/gitlab/migrate)
 - ✅ [runner](/software/gitlab/runner)
-- ✅ [升级](/software/upgrade)
+- ✅ [升级](/software/gitlab/upgrade)
