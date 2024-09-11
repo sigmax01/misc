@@ -14,7 +14,7 @@ footer: true
 
 ## 手动备份
 
-请见[这里](/software/misc/gitlab/migrate).
+请见[这里](/software/gitlab/migrate).
 
 ## 自动备份
 

@@ -178,7 +178,7 @@ server {
 
 ## 设置DDNS
 
-参考[这里](/software/misc/nezha/ddns).
+参考[这里](/software/nezha/ddns).
 
 ## 安装Agent
 
@@ -198,12 +198,12 @@ server {
 
 ## 美化
 
-参考[这里](/software/misc/nezha/beautify).
+参考[这里](/software/nezha/beautify).
 
 ## Telegram机器人
 
-参考[这里](/software/misc/nezha/telebot).
+参考[这里](/software/nezha/telebot).
 
 ## 告警
 
-参考[这里](/software/misc/nezha/warning).
+参考[这里](/software/nezha/warning).

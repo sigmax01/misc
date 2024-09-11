@@ -17,44 +17,52 @@ export const nav = [
     text: "常用软件",
     items: [
       {
-        text: "虚拟化软件",
-        items: [
-          {
-            text: "VMWare",
-            link: "/software/vmtools/vmware/",
-          },
-        ],
+        text: "Alist",
+        link: "/software/alist",
       },
       {
-        text: "桌面",
-        items: [
-          {
-            text: "KDE",
-            link: "/software/desktop/kde/",
-          },
-        ],
+        text: "Cloudflare",
+        link: "/software/cloudflare",
       },
       {
-        text: "开发软件",
-        items: [
-          {
-            text: "Jetbrains",
-            link: "/software/dev/jetbrains",
-          },
-        ],
+        text: "Github",
+        link: "/software/github",
       },
       {
-        text: "科学上网",
-        items: [
-          {
-            text: "Xray",
-            link: "/software/vpn/xray",
-          },
-        ],
+        text: "Gialab",
+        link: "/software/gitlab",
       },
       {
-        text: "杂七杂八",
-        link: "/software/misc/",
+        text: "Jetbrains",
+        link: "/software/jetbrains",
+      },
+      {
+        text: "KDE",
+        link: "/software/kde",
+      },
+      {
+        text: "Mkdocs",
+        link: "/software/mkdocs",
+      },
+      {
+        text: "Nezha",
+        link: "/software/nezha",
+      },
+      {
+        text: "Portainer",
+        link: "/software/portainer",
+      },
+      {
+        text: "SSH",
+        link: "/software/ssh",
+      },
+      {
+        text: "VMware",
+        link: "/software/vmware",
+      },
+      {
+        text: "Xray",
+        link: "/software/xray",
       },
     ],
   },

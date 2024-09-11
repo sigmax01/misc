@@ -1,5 +1,5 @@
 ---
-title: Archlinux简介
+title: Archlinux
 layout: doc
 navbar: true
 sidebar: false
@@ -8,6 +8,8 @@ outline: 2
 lastUpdated: false
 editLink: false
 footer: true
+next: false
+prev: false
 ---
 
 <style>

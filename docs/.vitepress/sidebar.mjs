@@ -53,202 +53,156 @@ export const sidebar = {
       ],
     },
   ],
-  "/software/desktop/kde/": [
+  "/software/kde/": [
     {
       text: "配置",
-      link: "/software/desktop/kde/config",
+      link: "/software/config",
     },
   ],
-  "/software/misc/": [
+  "/software/gitlab": [
     {
-      text: "Gitlab",
-      items: [
-        {
-          text: "升级",
-          link: "/software/misc/gitlab/upgrade.md",
-        },
-        {
-          text: "迁移",
-          link: "/software/misc/gitlab/migrate.md",
-        },
-        {
-          text: "备份",
-          link: "/software/misc/gitlab/backup.md",
-        },
-        {
-          text: "runner",
-          link: "/software/misc/gitlab/runner.md",
-        },
-      ],
+      text: "升级",
+      link: "/software/gitlab/upgrade.md",
     },
     {
-      text: "Github",
-      items: [
-        {
-          text: "Runner",
-          link: "/software/misc/github/runner.md",
-        },
-      ],
+      text: "迁移",
+      link: "/software/gitlab/migrate.md",
     },
     {
-      text: "Portainer",
-      items: [
-        {
-          text: "安装",
-          link: "/software/misc/portainer/install.md",
-        },
-        {
-          text: "堆",
-          link: "/software/misc/portainer/stack.md",
-        },
-      ],
+      text: "备份",
+      link: "/software/gitlab/backup.md",
     },
     {
-      text: "Alist",
-      items: [
-        {
-          text: "无法预览PDF",
-          link: "/software/misc/alist/cannot-preview-pdf",
-        },
-        {
-          text: "改变Logo大小",
-          link: "/software/misc/alist/change-logo-size",
-        },
-      ],
-    },
-    {
-      text: "SSH",
-      items: [
-        {
-          text: "使用谷歌验证器2FA",
-          link: "/software/misc/ssh/use-google-2fa",
-        },
-      ],
-    },
-    {
-      text: "Cloudflare",
-      items: [
-        {
-          text: "R2对象存储防盗链",
-          link: "/software/misc/cloudflare/r2-waf",
-        },
-      ],
-    },
-    {
-      text: "哪吒",
-      items: [
-        {
-          text: "部署探针",
-          link: "/software/misc/nezha/install",
-        },
-        {
-          text: "数据迁移",
-          link: "/software/misc/nezha/migrate",
-        },
-        {
-          text: "Telegram机器人通知",
-          link: "/software/misc/nezha/telebot",
-        },
-        {
-          text: "美化",
-          link: "/software/misc/nezha/beautify",
-        },
-        {
-          text: "DDNS",
-          link: "/software/misc/nezha/ddns",
-        },
-        {
-          text: "告警",
-          link: "/software/misc/nezha/warning",
-        },
-        {
-          text: "服务",
-          link: "/software/misc/nezha/service",
-        },
-      ],
-    },
-    {
-      text: "Mkdocs",
-      items: [
-        {
-          text: "mkdocs-git-committers-plugin-2配置",
-          link: "/software/misc/mkdocs/git-committers2",
-        },
-        {
-          text: "内嵌视频",
-          link: "/software/misc/mkdocs/video",
-        },
-      ],
+      text: "runner",
+      link: "/software/gitlab/runner.md",
     },
   ],
-  "/software/dev/jetbrains": [
+  "/software/github": [
     {
-      text: "问题",
-      items: [
-        {
-          text: "无法调整MD单元格内的文字大小",
-          link: "/software/dev/jetbrains/cannot-addjust-font-in-md-cell",
-        },
-      ],
+      text: "Runner",
+      link: "/software/github/runner.md",
     },
   ],
-  "/software/vpn/": [
+  "/software/portainer": [
+    {
+      text: "安装",
+      link: "/software/portainer/install.md",
+    },
+    {
+      text: "堆",
+      link: "/software/portainer/stack.md",
+    },
+  ],
+  "/software/alist": [
+    {
+      text: "无法预览PDF",
+      link: "/software/alist/cannot-preview-pdf",
+    },
+    {
+      text: "改变Logo大小",
+      link: "/software/alist/change-logo-size",
+    },
+  ],
+  "/software/ssh": [
+    {
+      text: "使用谷歌验证器2FA",
+      link: "/software/ssh/use-google-2fa",
+    },
+  ],
+  "/software/cloudflare": [
+    {
+      text: "R2对象存储防盗链",
+      link: "/software/cloudflare/r2-waf",
+    },
+  ],
+  "/software/nezha": [
+    {
+      text: "部署探针",
+      link: "/software/nezha/install",
+    },
+    {
+      text: "数据迁移",
+      link: "/software/nezha/migrate",
+    },
+    {
+      text: "Telegram机器人通知",
+      link: "/software/nezha/telebot",
+    },
+    {
+      text: "美化",
+      link: "/software/nezha/beautify",
+    },
+    {
+      text: "DDNS",
+      link: "/software/nezha/ddns",
+    },
+    {
+      text: "告警",
+      link: "/software/nezha/warning",
+    },
+    {
+      text: "服务",
+      link: "/software/nezha/service",
+    },
+  ],
+  "/software/mkdocs": [
+    {
+      text: "mkdocs-git-committers-plugin-2配置",
+      link: "/software/mkdocs/git-committers2",
+    },
+    {
+      text: "内嵌视频",
+      link: "/software/mkdocs/video",
+    },
+  ],
+  "/software/jetbrains": [
+    {
+      text: "无法调整MD单元格内的文字大小",
+      link: "/software/jetbrains/cannot-addjust-font-in-md-cell",
+    },
+  ],
+  "/software/xray": [
     {
       text: "实用小脚本",
       items: [
         {
           text: "申请证书",
-          link: "/software/vpn/apply-cert",
+          link: "/software/apply-cert",
         },
       ],
     },
   ],
-  "/software/vmtools/vmware/": [
+  "/software/vmware/": [
+    { text: "选项", link: "/software/vmtools/vmware/choice" },
+    { text: "CPU", link: "/software/vmtools/vmware/cpu" },
     {
-      text: "优化",
-      items: [
-        { text: "选项", link: "/software/vmtools/vmware/choice" },
-        { text: "CPU", link: "/software/vmtools/vmware/cpu" },
-        {
-          text: "网络",
-          link: "/software/vmtools/vmware/network",
-        },
-        {
-          text: "存储",
-          link: "/software/vmtools/vmware/storage",
-        },
-      ],
+      text: "网络",
+      link: "/software/vmtools/vmware/network",
     },
     {
-      text: "问题",
-      items: [
-        { text: "鼠标抓取", link: "/software/vmtools/vmware/mouse-grub" },
-        {
-          text: "鼠标侧边栏按键",
-          link: "/software/vmtools/vmware/mouse-side-tools",
-        },
-        {
-          text: "无法找到共享文件夹",
-          link: "/software/vmtools/vmware/shared-cannot-find",
-        },
-        {
-          text: "鼠标滚动迟缓",
-          link: "/software/vmtools/vmware/mouse-scroll-delay",
-        },
-      ],
+      text: "存储",
+      link: "/software/vmtools/vmware/storage",
+    },
+    { text: "鼠标抓取", link: "/software/vmtools/vmware/mouse-grub" },
+    {
+      text: "鼠标侧边栏按键",
+      link: "/software/vmtools/vmware/mouse-side-tools",
     },
     {
-      text: "提示",
-      items: [
-        {
-          text: "切换磁盘为预分配/动态分配",
-          link: "/software/vmtools/vmware/disk-switch-allocation",
-        },
-        {
-          text: "VMWare工具",
-          link: "/software/vmtools/vmware/vmware-tools",
-        },
-      ],
+      text: "无法找到共享文件夹",
+      link: "/software/vmtools/vmware/shared-cannot-find",
+    },
+    {
+      text: "鼠标滚动迟缓",
+      link: "/software/vmtools/vmware/mouse-scroll-delay",
+    },
+    {
+      text: "切换磁盘为预分配/动态分配",
+      link: "/software/vmtools/vmware/disk-switch-allocation",
+    },
+    {
+      text: "VMWare工具",
+      link: "/software/vmtools/vmware/vmware-tools",
     },
   ],
 };
