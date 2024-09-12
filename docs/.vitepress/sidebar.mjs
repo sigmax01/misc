@@ -108,6 +108,14 @@ export const sidebar = {
       text: "使用谷歌验证器2FA",
       link: "/software/ssh/use-google-2fa",
     },
+    {
+      text: "限制IP登录",
+      link: "/software/ssh/restrict-ip-login",
+    },
+    {
+      text: "端口转发",
+      link: "/software/ssh/port-forwarding",
+    },
   ],
   "/software/cloudflare": [
     {
