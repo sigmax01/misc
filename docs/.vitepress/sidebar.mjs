@@ -213,4 +213,22 @@ export const sidebar = {
       link: "/software/vmtools/vmware/vmware-tools",
     },
   ],
+  "/software/minio": [
+    {
+      text: "virtual host 风格",
+      link: "/software/minio/virtual-host-style",
+    },
+    {
+      text: "无法加载桶",
+      link: "/software/minio/can-not-load-bucket",
+    },
+    {
+      text: "无法启动容器",
+      link: "/software/minio/can-not-start",
+    },
+    {
+      text: "awscli",
+      link: "/software/minio/aws-cli",
+    },
+  ],
 };
