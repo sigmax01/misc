@@ -41,6 +41,10 @@ export const nav = [
         link: "/software/kde",
       },
       {
+        text: "Minio",
+        link: "/software/Minio",
+      },
+      {
         text: "Mkdocs",
         link: "/software/mkdocs",
       },
