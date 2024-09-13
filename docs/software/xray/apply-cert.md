@@ -14,7 +14,7 @@ footer: true
 
 ```bash
 apt install socat cron -y
-cd /root
+cd /home/wenzexu
 curl https://get.acme.sh | sh
 read -p "Enter email: " email
 read -p "Enter domain: " domain
@@ -52,7 +52,7 @@ do
     esac
 done
 echo "You have selected: $opt"
-/root/.acme.sh/acme.sh --register-account -m $email
-/root/.acme.sh/acme.sh --issue -d $domain --standalone
-/root/.acme.sh/acme.sh --installcert -d $domain --key-file /root/private.key --fullchain-file /root/cert.crt
+/home/wenzexu/.acme.sh/acme.sh --register-account -m $email
+/home/wenzexu/.acme.sh/acme.sh --issue -d $domain --standalone
+/home/wenzexu/.acme.sh/acme.sh --installcert -d $domain --key-file /home/wenzexu/private.key --fullchain-file /home/wenzexu/cert.crt
 ```

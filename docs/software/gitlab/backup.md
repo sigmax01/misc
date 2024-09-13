@@ -62,8 +62,8 @@ footer: true
 ### 服务器配置
 
 1. 下载awscli: `apt install awscli`
-2. 配置: `aws configure`, 输入刚才的key和secret, 地区选择`us-west-1`, 配置信息会记录在`/root/.aws/credentials`和`/root/.aws/config`中, 如可以进行多用户配置:
-    `/root/.aws/credentials`文件:
+2. 配置: `aws configure`, 输入刚才的key和secret, 地区选择`us-west-1`, 配置信息会记录在`/home/wenzexu/.aws/credentials`和`/home/wenzexu/.aws/config`中, 如可以进行多用户配置:
+    `/home/wenzexu/.aws/credentials`文件:
     ```
     [default]
     aws_access_key_id = xxxxxxxx
@@ -72,7 +72,7 @@ footer: true
     aws_access_key_id = YYYYYYYY
     aws_secret_access_key = YYYYYYYY
     ```
-    `/root/.aws/config`文件: 
+    `/home/wenzexu/.aws/config`文件: 
     ```
     [default]
     region = us-west-1
@@ -84,7 +84,7 @@ footer: true
 
 ### 配置Gitlab
 
-在`/root/app/gitlab/config/gitlab-rb`文件中追加:
+在`/home/wenzexu/app/gitlab/config/gitlab-rb`文件中追加:
 
 ```
 gitlab_rails['backup_upload_connection'] = {
@@ -96,40 +96,40 @@ gitlab_rails['backup_upload_connection'] = {
 gitlab_rails['backup_upload_remote_directory'] = 'ricolxwz-gitlab'
 ```
 
-然后: `docker compose -f /root/app.yaml exec gitlab gitlab-ctl reconfigure`
+然后: `docker compose -f /home/wenzexu/app.yaml exec gitlab gitlab-ctl reconfigure`
 
 ### 脚本配置
 
-创建上传脚本`/root/gitlab-backup.sh`:
+创建上传脚本`/home/wenzexu/gitlab-backup.sh`:
 
 ```
-cp /root/app/gitlab/config/gitlab-secrets.json /root/gitlab-secrets.json
-cp /root/app/gitlab/config/gitlab.rb /root/gitlab.rb
-cp -r /root/app/gitlab/data /root
-mv /root/gitlab-secrets.json /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab-secrets.json
-mv /root/gitlab.rb /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab.rb
-tar -czvf /root/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-data.tar.gz /root/data
-aws s3 cp /root/*-gitlab-secrets.json s3://ricolxwz-gitlab/
-aws s3 cp /root/*-gitlab.rb s3://ricolxwz-gitlab/
-aws s3 cp /root/*-data.tar.gz s3://ricolxwz-gitlab/
-rm /root/*-gitlab-secrets.json
-rm /root/*-gitlab.rb
-rm /root/*-data.tar.gz
-rm -rf /root/data
-docker compose -f /root/app.yaml exec gitlab gitlab-backup create STRATEGY=copy
-docker compose -f /root/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
+cp /home/wenzexu/app/gitlab/config/gitlab-secrets.json /home/wenzexu/gitlab-secrets.json
+cp /home/wenzexu/app/gitlab/config/gitlab.rb /home/wenzexu/gitlab.rb
+cp -r /home/wenzexu/app/gitlab/data /home/wenzexu
+mv /home/wenzexu/gitlab-secrets.json /home/wenzexu/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab-secrets.json
+mv /home/wenzexu/gitlab.rb /home/wenzexu/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-gitlab.rb
+tar -czvf /home/wenzexu/$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)-$(date +%S)-data.tar.gz /home/wenzexu/data
+aws s3 cp /home/wenzexu/*-gitlab-secrets.json s3://ricolxwz-gitlab/
+aws s3 cp /home/wenzexu/*-gitlab.rb s3://ricolxwz-gitlab/
+aws s3 cp /home/wenzexu/*-data.tar.gz s3://ricolxwz-gitlab/
+rm /home/wenzexu/*-gitlab-secrets.json
+rm /home/wenzexu/*-gitlab.rb
+rm /home/wenzexu/*-data.tar.gz
+rm -rf /home/wenzexu/data
+docker compose -f /home/wenzexu/app.yaml exec gitlab gitlab-backup create STRATEGY=copy
+docker compose -f /home/wenzexu/app.yaml exec gitlab find /var/opt/gitlab/backups/ -name "*.tar" -exec rm {} \;
 ```
 
-赋予脚本执行权限: `chmod u+x /root/gitlab-backup.sh`.
+赋予脚本执行权限: `chmod u+x /home/wenzexu/gitlab-backup.sh`.
 
 ### 测试
 
-测试一下: `/root/gitlab-backup.sh`, 然后看看S3上有没有文件.
+测试一下: `/home/wenzexu/gitlab-backup.sh`, 然后看看S3上有没有文件.
 
 ### 配置定时任务
 
 新建cron任务:
 
 ```
-0 0 */10 * * /root/gitlab-backup.sh
+0 0 */10 * * /home/wenzexu/gitlab-backup.sh
 ```

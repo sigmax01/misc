@@ -79,7 +79,7 @@ curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -
 
 ```bash
 apt install cron socat -y
-cd /root
+cd /home/wenzexu
 curl https://get.acme.sh | sh
 read -p "Enter email: " email
 read -p "Enter domain: " domain
@@ -119,7 +119,7 @@ done
 echo "You have selected: $opt"
 ~/.acme.sh/acme.sh --register-account -m $email
 ~/.acme.sh/acme.sh --issue -d $domain --standalone
-~/.acme.sh/acme.sh --installcert -d $domain --key-file /root/private_stat.key --fullchain-file /root/cert_stat.crt
+~/.acme.sh/acme.sh --installcert -d $domain --key-file /home/wenzexu/private_stat.key --fullchain-file /home/wenzexu/cert_stat.crt
 ```
 
 ### 设置Nginx
@@ -142,8 +142,8 @@ server {
         listen 443 ssl;
         listen [::]:443 ssl;
         server_name <domain>;
-        ssl_certificate       /root/cert_stat.crt;
-        ssl_certificate_key   /root/private_stat.key;
+        ssl_certificate       /home/wenzexu/cert_stat.crt;
+        ssl_certificate_key   /home/wenzexu/private_stat.key;
         ssl_session_timeout 1d;
         ssl_session_cache shared:MozSSL:10m;
         ssl_session_tickets off;

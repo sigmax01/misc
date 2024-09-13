@@ -17,8 +17,8 @@ footer: true
 ## 自签证书
 
 ```
-mkdir -p /root/ssl
-openssl req -x509 -newkey rsa:4096 -keyout /root/ssl/portainer_private.key -out /root/ssl/portainer_cert.crt -days 365 -sha256 -nodes
+mkdir -p /home/wenzexu/ssl
+openssl req -x509 -newkey rsa:4096 -keyout /home/wenzexu/ssl/portainer_private.key -out /home/wenzexu/ssl/portainer_cert.crt -days 365 -sha256 -nodes
 ```
 
 1. 国家: CN
