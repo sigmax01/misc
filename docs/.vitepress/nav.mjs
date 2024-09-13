@@ -42,7 +42,7 @@ export const nav = [
       },
       {
         text: "Minio",
-        link: "/software/Minio",
+        link: "/software/minio",
       },
       {
         text: "Mkdocs",
