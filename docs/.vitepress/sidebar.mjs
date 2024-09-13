@@ -230,5 +230,9 @@ export const sidebar = {
       text: "awscli",
       link: "/software/minio/aws-cli",
     },
+    {
+      text: "自定义权限",
+      link: "/software/minio/policy-to-one-bucket",
+    },
   ],
 };

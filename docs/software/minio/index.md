@@ -20,3 +20,4 @@ prev: false
 - ✅ [无法加载桶](/software/minio/can-not-load-bucket)
 - ✅ [无法启动容器](/software/minio/can-not-start)
 - ✅ [awscli](/software/minio/aws-cli)
+- ✅ [自定义权限](/software/minio/policy-to-one-bucket)
