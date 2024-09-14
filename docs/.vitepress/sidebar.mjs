@@ -235,4 +235,10 @@ export const sidebar = {
       link: "/software/minio/policy-to-one-bucket",
     },
   ],
+  "/software/gitea": [
+    {
+      text: "常用配置",
+      link: "/software/gitea/config",
+    },
+  ],
 };

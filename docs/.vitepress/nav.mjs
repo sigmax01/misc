@@ -25,6 +25,10 @@ export const nav = [
         link: "/software/cloudflare",
       },
       {
+        text: "Gitea",
+        link: "/software/gitea",
+      },
+      {
         text: "Github",
         link: "/software/github",
       },
