@@ -23,3 +23,7 @@ admin就是第一次登录的时候创建的用户.
 ## 主页
 
 可以通过修改`app.ini`文件的`[server]`项的`LANDIING_PAGE`修改默认主页.
+
+## SSH
+
+请在`app.ini`文件中定义`SSH_PORT`为映射在主机上的SSH端口, 如22; 而`SSH_LISTEN_PORT`为内置SSH的端口, 应该设置为`22`.
