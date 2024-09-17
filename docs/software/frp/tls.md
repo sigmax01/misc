@@ -28,8 +28,7 @@ external_ip_v6=$(curl -6 -s ifconfig.me)
 rm /home/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
 mkdir -p /home/wenzexu/man/frp/ssl
-cat > /home/wenzexu/man/frp/ssl/my-openssl.cnf << EOF
-[ ca ]
+echo "[ ca ]
 default_ca = CA_default
 [ CA_default ]
 x509_extensions = usr_cert
@@ -51,8 +50,7 @@ authorityKeyIdentifier = keyid,issuer
 [ v3_ca ]
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always,issuer
-basicConstraints       = CA:true
-EOF
+basicConstraints       = CA:true" > /home/wenzexu/man/frp/ssl/my-openssl.cnf
 # 生成CA的公钥和私钥
 openssl genrsa -out /home/wenzexu/man/frp/ssl/ca-server.key 2048
 openssl req -x509 -new -nodes -key /home/wenzexu/man/frp/ssl/ca-server.key -subj "/CN=example.ca.com" -days 5000 -out /home/wenzexu/man/frp/ssl/ca-server.crt
@@ -83,8 +81,7 @@ rm /home/wenzexu/man/frp/ssl/my-openssl.cnf
 rm /Users/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
 mkdir -p /Users/wenzexu/man/frp/ssl
-cat > /Users/wenzexu/man/frp/ssl/my-openssl.cnf << EOF
-[ ca ]
+echo "[ ca ]
 default_ca = CA_default
 [ CA_default ]
 x509_extensions = usr_cert
@@ -106,8 +103,7 @@ authorityKeyIdentifier = keyid,issuer
 [ v3_ca ]
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always,issuer
-basicConstraints       = CA:true
-EOF
+basicConstraints       = CA:true" > /Users/wenzexu/man/frp/ssl/my-openssl.cnf
 # 生成CA的公钥和私钥
 openssl genrsa -out /Users/wenzexu/man/frp/ssl/ca-client.key 2048
 openssl req -x509 -new -nodes -key /Users/wenzexu/man/frp/ssl/ca-client.key -subj "/CN=example.ca.com" -days 5000 -out /Users/wenzexu/man/frp/ssl/ca-client.crt
