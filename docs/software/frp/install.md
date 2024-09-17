@@ -68,7 +68,7 @@ networks:
 ```
 
 ```toml
-bindAddr = "127.0.0.1"
+bindAddr = "0.0.0.0"
 bindPort = 7790
 auth.token = "<请填入token>"
 transport.tls.force = true
@@ -108,33 +108,6 @@ networks:
     external: true
 ```
 
-```
----
-# 请先确保app桥接网络已经创建
-# 请确保将PUID, PGID改成wenzexu的
-
-services:
-  alist: # 5244
-    container_name: alist
-    hostname: alist
-    image: 'xhofe/alist:latest'
-    restart: unless-stopped
-    volumes:
-      - /Users/wenzexu/app/alist:/opt/alist/data
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - PUID=501
-      - PGID=501
-      - UMASK=022
-    networks:
-      - app
-
-networks:
-  app:
-    external: true
-```
-
 ```toml
 serverAddr = "<请填入地址>" # 请使用DNS名称
 serverPort = 7790
@@ -144,6 +117,7 @@ transport.tls.certFile = "/etc/frp/client.crt"
 transport.tls.keyFile = "/etc/frp/client.key"
 transport.tls.trustedCaFile = "/etc/frp/ca-server.crt"
 
+# 示例
 [[proxies]]
 name = "alist"
 type = "tcp"
