@@ -17,12 +17,13 @@ footer: true
 ### 生成服务端证书
 
 ::: warning
-请替换frq.ricolxwz.io为你的域名, 因为frpc会根据本地的ca-server.crt检查服务器发过来的证书的签名中是否也是frp.ricolxwz.io. 同样的, frpc的配置文件中的地址应该改成frp.ricolxwz.io, 这样就可以顺利验证. 或者写IP也行, 这样的话frpc配置文件中也要写IP.
+请替换frq.ricolxwz.io为你的域名, 因为frpc会根据本地的ca-server.crt检查服务器发过来的证书的签名中是否也是frp.ricolxwz.io. 同样的, frpc的配置文件中的地址应该改成frp.ricolxwz.io, 这样就可以顺利验证. 或者写IP也行, 这样的话frpc配置文件中也要写IP. 下面脚本会自动获取服务器的外部ip并填入.
 :::
 
 ```bash
-# 询问用户FRP服务器的IP
-read -p "Please input the ip of FRP server: " frp_ip
+# 获取服务器的外部ip
+external_ip_v4=$(curl -4 -s ifconfig.me)
+external_ip_v6=$(curl -6 -s ifconfig.me)
 # 移除现有的所有证书文件
 rm /home/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
@@ -61,12 +62,12 @@ openssl genrsa -out /home/wenzexu/man/frp/ssl/server.key 2048
 openssl req -new -sha256 -key /home/wenzexu/man/frp/ssl/server.key \
 -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=server.com" \
 -reqexts SAN \
--config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=IP:${frp_ip}")) \
+-config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=IP:${external_ip_v4},IP:[${external_ip_v6}]")) \
 -out /home/wenzexu/man/frp/ssl/server.csr
 # 使用CSR向CA发起签名请求, 并返回服务端公钥
 openssl x509 -req -days 365 -sha256 \
 -in /home/wenzexu/man/frp/ssl/server.csr -CA /home/wenzexu/man/frp/ssl/ca-server.crt -CAkey /home/wenzexu/man/frp/ssl/ca-server.key -CAcreateserial \
--extfile <(printf "subjectAltName=IP:${frp_ip}") \
+-extfile <(printf "subjectAltName=IP:${external_ip_v4},IP:[${external_ip_v6}]") \
 -out /home/wenzexu/man/frp/ssl/server.crt
 # 移除不必要的文件
 rm /home/wenzexu/man/frp/ssl/ca-server.key
