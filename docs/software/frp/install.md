@@ -14,11 +14,19 @@ footer: true
 
 ## 服务端
 
+### 准备
+
 ```bash
 useradd -mG docker -s /bin/bash -d /home/wenzexu wenzexu
 su wenzexu
 docker network create --subnet=172.18.0.0/24 app
 ```
+
+### SSL证书
+
+请见[这里](/software/frp/tls/#生成服务端证书).
+
+### `man.yaml`文件
 
 ```yaml
 ---
@@ -33,9 +41,9 @@ services:
       - app
     volumes:
       - /home/wenzexu/man/frp/frps.toml:/etc/frp/frps.toml:ro
-      - /home/wenzexu/man/frp/ca-client.crt:/etc/frp/ca-client.crt:ro
-      - /home/wenzexu/man/frp/server.crt:/etc/frp/server.crt:ro
-      - /home/wenzexu/man/frp/server.key:/etc/frp/server.key:ro
+      - /home/wenzexu/man/frp/ssl/ca-client.crt:/etc/frp/ssl/ca-client.crt:ro
+      - /home/wenzexu/man/frp/ssl/server.crt:/etc/frp/ssl/server.crt:ro
+      - /home/wenzexu/man/frp/ssl/server.key:/etc/frp/ssl/server.key:ro
     ports:
       - 7790:7790
   watchtower:
@@ -67,14 +75,16 @@ networks:
     external: true
 ```
 
+### `frps.toml`文件
+
 ```toml
 bindAddr = "0.0.0.0"
 bindPort = 7790
 auth.token = "<请填入token>"
 transport.tls.force = true
-transport.tls.certFile = "/etc/frp/server.crt"
-transport.tls.keyFile = "/etc/frp/server.key"
-transport.tls.trustedCaFile = "/etc/frp/ca-client.crt"
+transport.tls.certFile = "/etc/frp/ssl/server.crt"
+transport.tls.keyFile = "/etc/frp/ssl/server.key"
+transport.tls.trustedCaFile = "/etc/frp/ssl/ca-client.crt"
 allowPorts = [
   {start = 60000, end = 65535}
 ]
@@ -82,9 +92,19 @@ allowPorts = [
 
 ## 客户端
 
+目前客户端主要用的是Mac Mini.
+
+### 准备
+
 ```
 docker network create --subnet=172.18.0.0/24 app
 ```
+
+### SSL证书
+
+请见[这里](/software/frp/tls/#生成客户端证书).
+
+### `man.yaml`文件
 
 ```yaml
 ---
@@ -99,25 +119,26 @@ services:
       - app
     volumes:
       - /Users/wenzexu/man/frp/frpc.toml:/etc/frp/frpc.toml:ro
-      - /Users/wenzexu/man/frp/ca-server.crt:/etc/frp/ca-server.crt:ro
-      - /Users/wenzexu/man/frp/client.crt:/etc/frp/client.crt:ro
-      - /Users/wenzexu/man/frp/client.key:/etc/frp/client.key:ro
+      - /Users/wenzexu/man/frp/ssl/ca-server.crt:/etc/frp/ssl/ca-server.crt:ro
+      - /Users/wenzexu/man/frp/ssl/client.crt:/etc/frp/ssl/client.crt:ro
+      - /Users/wenzexu/man/frp/ssl/client.key:/etc/frp/ssl/client.key:ro
 
 networks:
   app:
     external: true
 ```
 
+### `frpc.toml`文件
+
 ```toml
 serverAddr = "<请填入地址>" # 请使用DNS名称
 serverPort = 7790
 auth.token = "<请填入token>"
 transport.tls.enable = true
-transport.tls.certFile = "/etc/frp/client.crt"
-transport.tls.keyFile = "/etc/frp/client.key"
-transport.tls.trustedCaFile = "/etc/frp/ca-server.crt"
+transport.tls.certFile = "/etc/frp/ssl/client.crt"
+transport.tls.keyFile = "/etc/frp/ssl/client.key"
+transport.tls.trustedCaFile = "/etc/frp/ssl/ca-server.crt"
 
-# 示例
 [[proxies]]
 name = "alist"
 type = "tcp"

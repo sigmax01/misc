@@ -17,5 +17,4 @@ prev: false
 ## 目录
 
 - ✅ [安装](/software/frp/install)
-- ✅ [TLS](/software/frp/tls)
-- ✅ [APP](/software/frp/app)
+- ✅ [安全](/software/frp/tls)

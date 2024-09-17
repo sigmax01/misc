@@ -247,12 +247,8 @@ export const sidebar = {
       link: "/software/frp/install",
     },
     {
-      text: "TLS",
+      text: "安全",
       link: "/software/frp/tls",
-    },
-    {
-      text: "APP",
-      link: "/software/frp/app",
-    },
+    }
   ],
 };
