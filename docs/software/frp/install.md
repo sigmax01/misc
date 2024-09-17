@@ -68,7 +68,7 @@ networks:
 ```
 
 ```toml
-bindAddr = "0.0.0.0"
+bindAddr = "127.0.0.1"
 bindPort = 7790
 auth.token = "<请填入token>"
 transport.tls.force = true
