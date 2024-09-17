@@ -35,6 +35,9 @@ services:
       - app
     volumes:
       - /home/wenzexu/man/frp/frps.toml:/etc/frp/frps.toml:ro
+      - /home/wenzexu/man/frp/ca-server.crt:/etc/frp/ca-server.crt:ro
+      - /home/wenzexu/man/frp/client.crt:/etc/frp/client.crt:ro
+      - /home/wenzexu/man/frp/client.key:/etc/frp/client.key:ro
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
@@ -69,9 +72,9 @@ bindAddr = "127.0.0.1"
 bindPort = 7790
 auth.token = ""
 transport.tls.force = true
-transport.tls.certFile = ""
-transport.tls.keyFile = ""
-transport.tls.trustedCaFile = ""
+transport.tls.certFile = "server.crt"
+transport.tls.keyFile = "server.key"
+transport.tls.trustedCaFile = "ca-client.crt"
 allowPorts = [
   {start = 60000, end = 65535}
 ]
@@ -92,7 +95,9 @@ services:
       - app
     volumes:
       - /Users/wenzexu/man/frp/frpc.toml:/etc/frp/frpc.toml:ro
-      - /U
+      - /Users/wenzexu/man/frp/ca-server.crt:/etc/frp/ca-server.crt:ro
+      - /Users/wenzexu/man/frp/client.crt:/etc/frp/client.crt:ro
+      - /Users/wenzexu/man/frp/client.key:/etc/frp/client.key:ro
 
 networks:
   app:
@@ -104,9 +109,9 @@ serverAddr = ""
 serverPort = 7790
 auth.token = ""
 transport.tls.enable = true
-transport.tls.certFile = ""
-transport.tls.keyFile = ""
-transport.tls.trustedCaFile = ""
+transport.tls.certFile = "client.crt"
+transport.tls.keyFile = "client.key"
+transport.tls.trustedCaFile = "ca-server.crt"
 
 [[proxies]]
 name = "alist"
