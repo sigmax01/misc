@@ -57,7 +57,7 @@ footer: true
     openssl req -new -sha256 -key /home/wenzexu/man/frp/server.key \
     -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=server.com" \
     -reqexts SAN \
-    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com")) \
+    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:frp.ricolxwz.io")) \
     -out /home/wenzexu/man/frp/server.csr
     ```
 
@@ -65,7 +65,7 @@ footer: true
     ```
     openssl x509 -req -days 365 -sha256 \
     -in /home/wenzexu/man/frp/server.csr -CA /home/wenzexu/man/frp/ca-server.crt -CAkey /home/wenzexu/man/frp/ca-server.key -CAcreateserial \
-    -extfile <(printf "subjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com") \
+    -extfile <(printf "subjectAltName=DNS:frp.ricolxwz.io") \
     -out /home/wenzexu/man/frp/server.crt
     ```
 
@@ -113,13 +113,13 @@ footer: true
     openssl req -new -sha256 -key /Users/wenzexu/man/frp/client.key \
     -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=client.com" \
     -reqexts SAN \
-    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.client.com")) \
+    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:frp.ricolxwz.io")) \
     -out /Users/wenzexu/man/frp/client.csr 
     ```
 5. 使用CSR向CA发起签名请求, 并返回客户端的公钥
     ```
     openssl x509 -req -days 365 -sha256 \
     -in /Users/wenzexu/man/frp/client.csr -CA /Users/wenzexu/man/frp/ca-client.crt -CAkey /Users/wenzexu/man/frp/ca-client.key -CAcreateserial \
-    -extfile <(printf "subjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.client.com") \
+    -extfile <(printf "subjectAltName=DNS:frp.ricolxwz.io") \
     -out /Users/wenzexu/man/frp/client.crt
     ```
