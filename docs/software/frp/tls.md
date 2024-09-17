@@ -22,7 +22,8 @@ footer: true
 
 1. 配置OpenSSL
     ```
-    cat > my-openssl.cnf << EOF
+    mkdir -p /home/wenzexu/man/frp/ssl
+    cat > /home/wenzexu/man/frp/ssl/my-openssl.cnf << EOF
     [ ca ]
     default_ca = CA_default
     [ CA_default ]
@@ -86,7 +87,8 @@ footer: true
 
 1. 配置OpenSSL
     ```
-    cat > my-openssl.cnf << EOF
+    mkdir -p /Users/wenzexu/man/frp/ssl
+    cat > /Users/wenzexu/man/frp/ssl/my-openssl.cnf << EOF
     [ ca ]
     default_ca = CA_default
     [ CA_default ]
