@@ -132,9 +132,10 @@ networks:
 ### `frpc.toml`文件
 
 ```toml
-serverAddr = "<请填入地址>" # 请使用DNS名称
+serverAddr = "<请填入地址>"
 serverPort = 5440
 auth.token = "<请填入token>"
+transport.protocol = "websocket"
 transport.tls.enable = true
 transport.tls.certFile = "/etc/frp/ssl/client.crt"
 transport.tls.keyFile = "/etc/frp/ssl/client.key"
