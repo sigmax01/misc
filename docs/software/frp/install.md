@@ -12,14 +12,12 @@ footer: true
 
 # 安装
 
-```
-docker network create --subnet=172.18.0.0/24 app
-```
-
 ## 服务端
 
 ```bash
 useradd -mG docker -s /bin/bash -d /home/wenzexu wenzexu
+su wenzexu
+docker network create --subnet=172.18.0.0/24 app
 ```
 
 ```yaml
