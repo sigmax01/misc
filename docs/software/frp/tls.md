@@ -21,7 +21,7 @@ footer: true
 :::
 
 ```bash
-set -exoub
+set -exub
 # 获取服务器的外部ip
 external_ip_v4=$(curl -4 -s ifconfig.me)
 external_ip_v6=$(curl -6 -s ifconfig.me)
@@ -61,12 +61,12 @@ openssl genrsa -out /home/wenzexu/man/frp/ssl/server.key 2048
 openssl req -new -sha256 -key /home/wenzexu/man/frp/ssl/server.key \
 -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=server.com" \
 -reqexts SAN \
--config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=IP:${external_ip_v4},IP:[${external_ip_v6}]")) \
+-config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=IP:${external_ip_v4},IP:${external_ip_v6}")) \
 -out /home/wenzexu/man/frp/ssl/server.csr
 # 使用CSR向CA发起签名请求, 并返回服务端公钥
 openssl x509 -req -days 365 -sha256 \
 -in /home/wenzexu/man/frp/ssl/server.csr -CA /home/wenzexu/man/frp/ssl/ca-server.crt -CAkey /home/wenzexu/man/frp/ssl/ca-server.key -CAcreateserial \
--extfile <(printf "subjectAltName=IP:${external_ip_v4},IP:[${external_ip_v6}]") \
+-extfile <(printf "subjectAltName=IP:${external_ip_v4},IP:${external_ip_v6}") \
 -out /home/wenzexu/man/frp/ssl/server.crt
 # 移除不必要的文件
 rm /home/wenzexu/man/frp/ssl/ca-server.key
@@ -78,7 +78,7 @@ rm /home/wenzexu/man/frp/ssl/my-openssl.cnf
 ### 生成客户端证书
 
 ```bash
-set -exoub
+set -exub
 # 移除现有的所有证书文件
 rm /Users/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
