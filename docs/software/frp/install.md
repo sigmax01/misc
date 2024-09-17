@@ -63,6 +63,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "7750:7750"
       # - '81:81'
     volumes:
       - /home/wenzexu/man/nginx/data:/data
