@@ -136,7 +136,7 @@ networks:
 ```
 
 ```toml
-serverAddr = "<请填入地址>"
+serverAddr = "<请填入地址>" # 请使用DNS名称
 serverPort = 7790
 auth.token = "<请填入token>"
 transport.tls.enable = true
