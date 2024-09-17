@@ -45,7 +45,7 @@ services:
       - /home/wenzexu/man/frp/ssl/server.crt:/etc/frp/ssl/server.crt:ro
       - /home/wenzexu/man/frp/ssl/server.key:/etc/frp/ssl/server.key:ro
     ports:
-      - 7790:7790
+      - 5440:5440
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
@@ -79,7 +79,7 @@ networks:
 
 ```toml
 bindAddr = "0.0.0.0"
-bindPort = 7790
+bindPort = 5440
 auth.token = "<请填入token>"
 transport.tls.force = true
 transport.tls.certFile = "/etc/frp/ssl/server.crt"
@@ -132,7 +132,7 @@ networks:
 
 ```toml
 serverAddr = "<请填入地址>" # 请使用DNS名称
-serverPort = 7790
+serverPort = 5440
 auth.token = "<请填入token>"
 transport.tls.enable = true
 transport.tls.certFile = "/etc/frp/ssl/client.crt"
