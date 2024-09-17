@@ -24,7 +24,7 @@ docker network create --subnet=172.18.0.0/24 app
 
 ### SSL证书
 
-请见[这里](/software/frp/tls/#生成服务端证书).
+请见[这里](/software/frp/tls#生成服务端证书).
 
 ### `man.yaml`文件
 
@@ -102,7 +102,7 @@ docker network create --subnet=172.18.0.0/24 app
 
 ### SSL证书
 
-请见[这里](/software/frp/tls/#生成客户端证书).
+请见[这里](/software/frp/tls#生成客户端证书).
 
 ### `man.yaml`文件
 
