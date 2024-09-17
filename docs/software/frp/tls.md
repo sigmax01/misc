@@ -21,7 +21,7 @@ footer: true
 :::
 
 ```bash
-set -exub
+set -x
 # 获取服务器的外部ip
 external_ip_v4=$(curl -4 -s ifconfig.me)
 external_ip_v6=$(curl -6 -s ifconfig.me)
@@ -78,7 +78,7 @@ rm /home/wenzexu/man/frp/ssl/my-openssl.cnf
 ### 生成客户端证书
 
 ```bash
-set -exub
+set -x
 # 移除现有的所有证书文件
 rm /Users/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
