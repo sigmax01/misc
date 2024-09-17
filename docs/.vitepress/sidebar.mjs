@@ -250,5 +250,9 @@ export const sidebar = {
       text: "TLS",
       link: "/software/frp/tls",
     },
+    {
+      text: "APP",
+      link: "/software/frp/app",
+    },
   ],
 };

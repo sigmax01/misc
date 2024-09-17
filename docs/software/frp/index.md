@@ -18,3 +18,4 @@ prev: false
 
 - ✅ [安装](/software/frp/install)
 - ✅ [TLS](/software/frp/tls)
+- ✅ [APP](/software/frp/app)
