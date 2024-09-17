@@ -20,7 +20,7 @@ footer: true
 请替换frq.ricolxwz.io为你的域名, 因为frpc会根据本地的ca-server.crt检查服务器发过来的证书的签名中是否也是frp.ricolxwz.io. 同样的, frpc的配置文件中的地址应该改成frp.ricolxwz.io, 这样就可以顺利验证. 或者写IP也行, 这样的话frpc配置文件中也要写IP.
 :::
 
-```
+```bash
 # 询问用户FRP服务器的IP
 read -p "Please input the ip of FRP server: " frp_ip
 # 移除现有的所有证书文件
@@ -77,7 +77,7 @@ rm /home/wenzexu/man/frp/ssl/my-openssl.cnf
 
 ### 生成客户端证书
 
-```
+```bash
 # 移除现有的所有证书文件
 rm /Users/wenzexu/man/frp/ssl/*
 # 配置OpenSSL
@@ -134,10 +134,10 @@ rm /Users/wenzexu/man/frp/ssl/my-openssl.cnf
 
 使用SMTP服务交换服务端和客户端的CA公钥. 然后移除不必要的文件:
 
-```
+```bash
 rm /Users/wenzexu/man/frp/ssl/ca-client.crt
 ```
 
-```
+```bash
 rm /home/wenzexu/man/frp/ssl/ca-server.crt
 ```
