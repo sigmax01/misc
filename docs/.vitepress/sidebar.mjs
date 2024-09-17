@@ -241,4 +241,14 @@ export const sidebar = {
       link: "/software/gitea/config",
     },
   ],
+  "/software/frp": [
+    {
+      text: "安装",
+      link: "/software/frp/install",
+    },
+    {
+      text: "TLS",
+      link: "/software/frp/tls",
+    },
+  ],
 };

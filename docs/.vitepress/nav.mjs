@@ -25,6 +25,10 @@ export const nav = [
         link: "/software/cloudflare",
       },
       {
+        text: "FRP",
+        link: "/software/frp",
+      },
+      {
         text: "Gitea",
         link: "/software/gitea",
       },
