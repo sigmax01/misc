@@ -9,13 +9,6 @@ hero:
   image:
     src: https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg
     alt: 背景图
-  actions:
-    - theme: brand
-      text: 循迹漫游
-      link: nav
-    - theme: alt
-      text: Archlinux使用指南
-      link: /os/linux/archlinux/
 
 features:
   - title: 💡 小建议
