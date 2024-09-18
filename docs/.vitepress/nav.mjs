@@ -9,7 +9,23 @@ export const nav = [
             text: "Archlinux",
             link: "/os/linux/archlinux/",
           },
+          {
+            text: "Ubuntu",
+            link: "/os/linux/ubuntu",
+          },
+          {
+            text: "Debian",
+            link: "/os/linux/debian",
+          },
         ],
+      },
+      {
+        text: "MacOS",
+        link: "/os/macos",
+      },
+      {
+        text: "Windows",
+        link: "/os/windows",
       },
     ],
   },
