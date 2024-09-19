@@ -18,6 +18,14 @@ export default defineConfig({
         href: "https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg",
       },
     ],
+    [
+      'script',
+      {
+        src: "https://umami.ricolxwz.io/script.js",
+        defer: true,
+        "data-website-id": "212ed47d-c05f-44c0-8ea4-2c8e1fd31862"
+      }
+    ]
   ],
   markdown: {
     image: {
