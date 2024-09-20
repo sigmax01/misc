@@ -41,6 +41,10 @@ export const nav = [
         link: "/software/cloudflare",
       },
       {
+        text: "Cloudfront",
+        link: "/software/cloudfront",
+      },
+      {
         text: "FRP",
         link: "/software/frp",
       },

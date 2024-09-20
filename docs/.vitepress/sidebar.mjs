@@ -249,6 +249,16 @@ export const sidebar = {
     {
       text: "安全",
       link: "/software/frp/tls",
-    }
+    },
+  ],
+  "/software/cloudfront": [
+    {
+      text: "配置",
+      link: "/software/cloudfront/config",
+    },
+    {
+      text: "cloudfront配合nginx反向代理",
+      link: "/software/cloudfront/nginx-502",
+    },
   ],
 };
