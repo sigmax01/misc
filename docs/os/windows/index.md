@@ -15,3 +15,5 @@ prev: false
 # Windows
 
 ## 目录
+
+- ✅ [Powershell](/os/windows/powershell)
