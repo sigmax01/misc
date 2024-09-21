@@ -261,4 +261,10 @@ export const sidebar = {
       link: "/software/cloudfront/nginx-502",
     },
   ],
+  "/os/windows": [
+    {
+      text: "Powershell",
+      link: "/os/windows/powershell",
+    },
+  ],
 };
