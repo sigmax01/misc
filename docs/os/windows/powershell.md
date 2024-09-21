@@ -38,6 +38,12 @@ footer: true
 - `get-service`: 列出所有服务
 - `start-service -name <name>`: 启动某个服务
 - `stop-service -name <name>`: 终止某个服务
+- `write-output`: 适用于数据处理和传递, 如果你的脚本需要将数据作为对象传递给其他命令或者进一步处理, 应该使用这个. 它会把输出写入管道, 确保数据的可扩展性和灵活. 这是Powershell的默认输出方式, 直接写变量也是会自动输出的, 如`$result = 42; $result`等价于`$result = 42; write-output $result`
+- `out-file -filepath <path>`: 输出字符串到文件, 也可以使用重定向符号, 如`get-process > process.txt`, 但是可能参数没有`out-file`丰富, `out-file -filepath .\test.txt -inputobject "test"`
+
+## 管道
+
+https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_pipelines?view=powershell-7.4
 
 ## 条件
 
