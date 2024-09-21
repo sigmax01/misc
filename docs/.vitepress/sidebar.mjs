@@ -266,5 +266,9 @@ export const sidebar = {
       text: "Powershell",
       link: "/os/windows/powershell",
     },
+    {
+      text: "md5",
+      link: "/os/windows/md5",
+    },
   ],
 };

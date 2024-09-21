@@ -40,6 +40,7 @@ footer: true
 - `stop-service -name <name>`: 终止某个服务
 - `write-output`: 适用于数据处理和传递, 如果你的脚本需要将数据作为对象传递给其他命令或者进一步处理, 应该使用这个. 它会把输出写入管道, 确保数据的可扩展性和灵活. 这是Powershell的默认输出方式, 直接写变量也是会自动输出的, 如`$result = 42; $result`等价于`$result = 42; write-output $result`
 - `out-file -filepath <path>`: 输出字符串到文件, 也可以使用重定向符号, 如`get-process > process.txt`, 但是可能参数没有`out-file`丰富, `out-file -filepath .\test.txt -inputobject "test"`
+- `select-object`: 选择特定的属性
 
 ## 管道
 
@@ -134,3 +135,17 @@ try {
     write-output $_
 }
 ```
+
+## 执行
+
+- `.`: 将脚本中的变量, 函数导入当前会话, 脚本执行完后仍然可以访问这些内容
+- `&`: 在新作用域中执行脚本, 脚本执行后所有内容都会被销毁, 不影响当前会话
+
+## 作用域
+
+AllUsersAllHosts: 针对所有用户和所有PowerShell主机
+AllUsersCurrentHost: 针对所有用户但仅在当前PowerShell主机中执行
+CurrentUserAllHosts: 针对当前用户的所有PowerShell主机
+CurrentUserCurrentHost: 针对当前用户但仅在当前PowerShell主机中执行
+
+AllHosts: 对所有的Powershell实例都生效, 如Powershell控制台, Powershell ISE, VSCode中的Powershell Extension. 

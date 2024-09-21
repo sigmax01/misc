@@ -17,3 +17,4 @@ prev: false
 ## 目录
 
 - ✅ [Powershell](/os/windows/powershell)
+- ✅ [md5](/os/windows/md5)
