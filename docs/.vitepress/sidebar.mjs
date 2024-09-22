@@ -271,4 +271,10 @@ export const sidebar = {
       link: "/os/windows/md5",
     },
   ],
+  "/os/linux/ubuntu": [
+    {
+      text: "脚本",
+      link: "/os/linux/ubuntu",
+    },
+  ],
 };

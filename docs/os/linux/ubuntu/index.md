@@ -15,3 +15,5 @@ prev: false
 # Ubuntu
 
 ## 目录
+
+- ✅ [脚本](/os/linux/ubuntu/shell)
