@@ -149,3 +149,76 @@ CurrentUserAllHosts: 针对当前用户的所有PowerShell主机
 CurrentUserCurrentHost: 针对当前用户但仅在当前PowerShell主机中执行
 
 AllHosts: 对所有的Powershell实例都生效, 如Powershell控制台, Powershell ISE, VSCode中的Powershell Extension. 
+
+## 环境变量
+
+可以使用`$env:`查看当前所有可用的环境变量.
+
+```powershell
+get-childitem env:
+```
+
+可以通过`$env:`变量前缀来访问特定的环境变量, 如访问`PATH`环境变量.
+
+```powershell
+$env:PATH
+```
+
+## 权限
+
+### 执行策略
+
+Powershell的执行策略决定了脚本是否可以在系统上运行, 常见的执行策略有:
+
+- Restricted: 禁止执行任何Powershell脚本(默认)
+- AllSigned: 仅允许由受信任发布者签名的脚本
+- RemoteSigned: 本地脚本可以运行, 但是从网络下载的脚本必须经过数字签名
+- Unrestrited: 允许执行所有的脚本, 下载的脚本在第一次运行的时候会提示警告
+- Bypass: 没有任何限制, 允许所有脚本运行
+
+```powershell
+get-executionpolicy
+set-executionpolicy remotesigned
+```
+
+### 文件和目录
+
+`icacls`是windows上传统的cmd的命令行权限设置工具, `get-acl`, `set-acl`是powershell提供的命令行权限设置工具, 我们先来看`icacls`, 然后再看powershell的实现.
+
+#### `icacls`
+
+权限代码: 
+
+- F: 完全控制
+- M: 修改
+- RX: 读取和执行 
+- R: 读取
+- W: 写入
+
+权限控制:
+
+查看权限: `ICACLS "C:\Path\To\FileOrFolder"`
+授予权限: `ICACLS "C:\Path\To\FileOrFolder" /grant Users:(RX)`
+移除权限: `ICACLS "C:\Path\To\FileOrFolder" /remove Users`
+设置所有者: `ICACLS "C:\Path\To\FileOrFolder" /setowner Administrator`
+递归设置权限: `ICACLS "C:\Path\To\Directory" /grant Users:(R) /T`
+
+其中:
+
+- `/grant`: 在现有的基础上授予新的权限, 不会替换旧的权限
+- `/grant:r`: 替换用户或者组的现有权限, 并授予指定的新权限
+
+#### Powershell实现
+
+Powershell使用的是ACL进行权限控制. 首先, 获取文件或者目录的ACL. 注意, 虽然Powershell Core支持跨平台运行, 但是Linux上的Powershell中`set-acl`和`get-acl`是无法使用的, 可以直接使用`chmod`, `chown`
+
+```powershell
+get-acl <文件>
+```
+
+```powershell
+$acl = Get-Acl "D:\test\test.txt"
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("Users", "ReadAndExecute", "Allow")
+$acl.SetAccessRule($rule)
+Set-Acl "D:\test\test.txt" $acl
+```
