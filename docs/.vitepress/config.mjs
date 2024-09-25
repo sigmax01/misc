@@ -25,6 +25,13 @@ export default defineConfig({
         defer: true,
         "data-website-id": "212ed47d-c05f-44c0-8ea4-2c8e1fd31862"
       }
+    ],
+    [
+      "link",
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/@fontsource/mononoki@5.1.0/index.min.css"
+      }
     ]
   ],
   markdown: {

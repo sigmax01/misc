@@ -8,3 +8,8 @@
     );
     --vp-home-hero-image-filter: blur(44px);
   }
+
+  :root {
+    --vp-font-family-base: "mononoki", "HarmonyOS Sans SC";/* normal text font */
+    --vp-font-family-mono: "mononoki", "HarmonyOS Sans SC";/* code font */
+  }
