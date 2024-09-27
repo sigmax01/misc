@@ -35,5 +35,21 @@ touch /Volumes/SSD/app/filebrowser/config/filebrowser.db
 docker compose.
 
 ```
-
+filebrowser: # 80
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    hostname: filebrowser
+    restart: unless-stopped
+    ports:
+      - 5555:80
+    networks:
+      - net2
+    volumes:
+      - /Volumes/SSD/media:/srv
+      - type: bind
+        source: /Volumes/SSD/app/filebrowser/config/filebrowser.db
+        target: /filebrowser.db
+      - type: bind
+        source: /Volumes/SSD/app/filebrowser/config/.filebrowser.json
+        target: /.filebrowser.json
 ```
