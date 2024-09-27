@@ -283,4 +283,10 @@ export const sidebar = {
       link: "/software/jellyfin/ssl",
     },
   ],
+  "/software/torrent": [
+    {
+      text: "qBittorrent管理页面显示unauthorized",
+      link: "/software/torrent/qbittorrent-unauthorized",
+    },
+  ],
 };
