@@ -61,6 +61,10 @@ export const nav = [
         link: "/software/gitlab",
       },
       {
+        text: "Jellyfin",
+        link: "/software/jellyfin",
+      },
+      {
         text: "Jetbrains",
         link: "/software/jetbrains",
       },

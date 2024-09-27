@@ -277,4 +277,10 @@ export const sidebar = {
       link: "/os/linux/ubuntu",
     },
   ],
+  "/software/jellyfin": [
+    {
+      text: "自签证书",
+      link: "/software/jellyfin/ssl",
+    },
+  ],
 };
