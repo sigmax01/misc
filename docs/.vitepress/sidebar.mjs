@@ -289,4 +289,10 @@ export const sidebar = {
       link: "/software/torrent/qbittorrent-unauthorized",
     },
   ],
+  "/software/filebrowser": [
+    {
+      text: "配置",
+      link: "/software/filebrowser/config",
+    },
+  ],
 };
