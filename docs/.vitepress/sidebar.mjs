@@ -295,4 +295,10 @@ export const sidebar = {
       link: "/software/filebrowser/config",
     },
   ],
+  "/software/vscode": [
+    {
+      text: "配置使用CapsLock作为Escape",
+      link: "/software/vscode/capslock-as-esc",
+    },
+  ],
 };

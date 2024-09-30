@@ -105,6 +105,10 @@ export const nav = [
         link: "/software/vmware",
       },
       {
+        text: "VSCode",
+        link: "/software/vscode",
+      },
+      {
         text: "Xray",
         link: "/software/xray",
       },
