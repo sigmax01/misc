@@ -3,8 +3,8 @@ title: 档案室
 layout: doc
 navbar: true
 sidebar: false
-aside: false
-outline: 2
+aside: true
+outline: deep
 lastUpdated: false
 editLink: false
 footer: true
@@ -12,7 +12,13 @@ next: false
 prev: false
 ---
 
-# 目录
+# 档案室
+
+## 介绍
+
+这是一个乱七八糟的档案室, 见谅...
+
+## 进度
 
 - ✅ 操作系统
   - ✅ Linux
