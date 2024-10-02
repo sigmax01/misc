@@ -1,21 +1,50 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
-
-hero:
-  name: "包罗万象的档案库"
-  text: "包含各种硬件, 一众软件的使用指南"
-  tagline: 总能找到你想要的东西🫰
-  image:
-    src: https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg
-    alt: 背景图
-
-features:
-  - title: 💡 小建议
-    details: 选择永远大于努力
-  - title: 💪 努力
-    details: 如果做一件事就努力把它做好
-  - title: 🤔 思考
-    details: 学会思考, 不要人云亦云
+title: 档案室
+layout: doc
+navbar: true
+sidebar: false
+aside: true
+outline: deep
+lastUpdated: false
+editLink: false
+footer: true
+next: false
+prev: false
 ---
 
+# 档案室
+
+## 介绍
+
+这是一个乱七八糟的档案室, 见谅...
+
+## 进度
+
+- ✅ 操作系统
+  - ✅ Linux
+    - ✅ [Archlinux](/os/linux/archlinux/)
+    - ✅ [Debian](/os/linux/debian/)
+    - ✅ [Ubuntu](/os/linux/ubuntu/)
+  - ✅ [MacOS](/os/macos/)
+  - ✅ [Windows](/os/windows/)
+- ✅ 软件 
+  - ✅ [Alist](/software/alist/)
+  - ✅ [Cloudflare](/software/cloudflare/)
+  - ✅ [Cloudfront](/software/cloudfront/)
+  - ✅ [Filebrowser](/software/filebrowser/)
+  - ✅ [FRP](/software/frp/)
+  - ✅ [Gitea](/software/gitea/)
+  - ✅ [Github](/software/github/)
+  - ✅ [Gitlab](/software/gitlab/)
+  - ✅ [Jellyfin](/software/jellyfin/)
+  - ✅ [Jetbrains](/software/jetbrains/)
+  - ✅ [KDE](/software/kde/)
+  - ✅ [Minio](/software/minio/)
+  - ✅ [Mkdocs](/software/mkdocs/)
+  - ✅ [Nezha](/software/nezha/)
+  - ✅ [Portainer](/software/portainer/)
+  - ✅ [SSH](/software/ssh/)
+  - ✅ [Torrent](/software/torrent/)
+  - ✅ [VMWare](/software/vmware/)
+  - ✅ [VSCode](/software/vscode/)
+  - ✅ [Xray](/software/xray/)
