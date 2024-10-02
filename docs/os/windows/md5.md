@@ -14,6 +14,7 @@ footer: true
 
 ```powershell
 function md5p {
+    $current_dir = (Get-Location).path
     $latest_file = Get-ChildItem -Path "C:\Users\wenzexu\Pictures\Screenshots" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
     if ($latest_file) {
         $md5_hash = (Get-FileHash -Path $latest_file.FullName -Algorithm MD5 | Select-Object -ExpandProperty Hash).ToLower()
@@ -22,7 +23,13 @@ function md5p {
         $new_path = Join-Path $latest_file.DirectoryName $new_name
         Rename-Item -Path $latest_file.FullName -NewName $new_name
         wrangler r2 object put ricolxwz-image/"$new_name" --file="$new_path"
-        wrangler r2 object put ricolxwz-image-backup/"$new_name" --file="$new_path"
+        Set-Location C:\Users\wenzexu\image
+        git pull
+        Move-Item -Path "$new_path" -Destination "C:\Users\wenzexu\image\$new_name"
+        git add .
+        git commit -m "$(Get-Date -Format 'yyyy-MM-dd')"
+        git push origin
+        Set-Location $current_dir
         Write-Output "https://img.ricolxwz.io/$new_name" | Set-Clipboard
     } else {
         Write-Host "No files found."
