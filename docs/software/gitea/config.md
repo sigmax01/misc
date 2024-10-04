@@ -46,6 +46,7 @@ DEFAULT_BRANCH = master
 DEFAULT_REPO_UNITS = repo.code, repo.releases, repo.issues, repo.pulls, repo.wiki
 ENABLE_PUSH_CREATE_USER: true
 DISABLE_DOWNLOAD_SOURCE_ARCHIVES: true
+DISABLE_HTTP_GIT = true
 ```
 
 ## actions
