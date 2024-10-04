@@ -11,3 +11,18 @@ footer: true
 ---
 
 # 配置
+
+## UI
+
+- Admin-Settings-General:
+    - Sign-up restrictions:
+        - 🈚️ Sign-up enabled
+    - Visibility and access controls:
+        - Enabled Git access protocols: Only SSH
+- Admin-Settings-Repository:
+    - Default branch:
+        - Initial default branch name: master
+
+## `gitlab.rb`
+
+- `gitlab_rails['gitlab_ssh_host'] = '<你的ssh主机名>'`
