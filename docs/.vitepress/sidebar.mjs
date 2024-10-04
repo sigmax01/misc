@@ -278,8 +278,12 @@ export const sidebar = {
   "/os/linux/ubuntu": [
     {
       text: "脚本",
-      link: "/os/linux/ubuntu",
+      link: "/os/linux/ubuntu/shell",
     },
+    {
+      text: "网络",
+      link: "/os/linux/ubuntu/network"
+    }
   ],
   "/software/jellyfin": [
     {

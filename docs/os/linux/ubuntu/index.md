@@ -17,3 +17,4 @@ prev: false
 ## 目录
 
 - ✅ [脚本](/os/linux/ubuntu/shell)
+- ✅ [网络](/os/linux/ubuntu/network)
