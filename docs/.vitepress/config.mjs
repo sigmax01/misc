@@ -68,10 +68,10 @@ export default defineConfig({
         },
       },
     },
-    editLink: {
-      pattern: "https://github.com/sigmax01/edit/master/docs/:path",
-      text: "在 GitHub 上编辑此页面",
-    },
+    // editLink: {
+    //   pattern: "https://github.com/sigmax01/edit/master/docs/:path",
+    //   text: "在 GitHub 上编辑此页面",
+    // },
     docFooter: {
       prev: "上一页",
       next: "下一页",

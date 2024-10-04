@@ -76,6 +76,10 @@ export const sidebar = {
       text: "runner",
       link: "/software/gitlab/runner.md",
     },
+    {
+      text: "配置",
+      link: "/software/gitlab/config.md",
+    },
   ],
   "/software/github": [
     {
