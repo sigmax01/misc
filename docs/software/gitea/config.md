@@ -32,6 +32,8 @@ admin就是第一次登录的时候创建的用户.
 
 ```
 [repository]
+ROOT = /data/git/repositories
+DISABLED_REPO_UNITS =  repo.issues,repo.ext_issues,repo.pulls,repo.wiki,repo.ext_wiki
 DISABLED_REPO_UNITS = [repo.projects, repo.packages, repo.actions]
 DEFAULT_BRANCH = master
 ENABLE_PUSH_CREATE_USER: true
