@@ -17,6 +17,15 @@ footer: true
 ```
 [service]
 DISABLE_REGISTRATION = true
+SHOW_REGISTRATION_BUTTON = false
+SHOW_MILESTONES_DASHBOARD_PAGE = false
+```
+
+### service.explore
+
+```
+[service.explore]
+DISABLE_USERS_PAGE = true
 ```
 
 ## server
@@ -32,10 +41,9 @@ LANDING_PAGE = explore
 
 ```
 [repository]
-ROOT = /data/git/repositories
-DISABLED_REPO_UNITS =  repo.issues,repo.ext_issues,repo.pulls,repo.wiki,repo.ext_wiki
 DISABLED_REPO_UNITS = [repo.projects, repo.packages, repo.actions]
 DEFAULT_BRANCH = master
+DEFAULT_REPO_UNITS = [repo.code, repo.releases, repo.issues, repo.pulls, repo.wiki]
 ENABLE_PUSH_CREATE_USER: true
 DISABLE_DOWNLOAD_SOURCE_ARCHIVES: true
 ```
