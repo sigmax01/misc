@@ -29,3 +29,14 @@ footer: true
 ## `gitlab.rb`
 
 - `gitlab_rails['gitlab_ssh_host'] = '<你的ssh主机名>'`
+
+## Features
+
+```
+docker exec -it gitlab gitlab-rails console # 等几分钟
+Feature.enable(:<feature flag>)
+Feature.disable(:<feature flag>)
+Feature.all.map {|f| [f.name, f.state]} # 查看所有的features
+```
+
+- `web_ide_extensions_marketplace`: ✅
