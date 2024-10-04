@@ -28,15 +28,25 @@ admin就是第一次登录的时候创建的用户.
 
 请在`app.ini`文件中定义`SSH_PORT`为映射在主机上的SSH端口, 如22; 而`SSH_LISTEN_PORT`为内置SSH的端口, 应该设置为`22`.
 
-## 克隆
-
-## 克隆法
-
-## 克隆法
-
-关闭Https克隆:
+## 仓库
 
 ```
 [repository]
-DISABLE_HTTP_GIT = true
+DISABLED_REPO_UNITS = [repo.projects, repo.packages, repo.actions]
+DEFAULT_BRANCH = master
+ENABLE_PUSH_CREATE_USER: true
+DISABLE_DOWNLOAD_SOURCE_ARCHIVES: true
+```
+
+## Actions
+
+```
+[actions]
+ENABLED: false
+```
+
+## Packages
+```
+[packages]
+ENABLED: false
 ```
