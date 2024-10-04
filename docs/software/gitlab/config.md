@@ -19,6 +19,9 @@ footer: true
         - 🈚️ Sign-up enabled
     - Visibility and access controls:
         - Enabled Git access protocols: Only SSH
+- Admin-Settings-CI/CD:
+    - Continuous Integration and Deployment:
+        - 🈚️ Default to Auto DevOps pipeline for all projects
 - Admin-Settings-Repository:
     - Default branch:
         - Initial default branch name: master
