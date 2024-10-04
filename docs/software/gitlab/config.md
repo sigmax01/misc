@@ -25,6 +25,9 @@ footer: true
 - Admin-Settings-Repository:
     - Default branch:
         - Initial default branch name: master
+- User-Preferences:
+    - Integrations:
+        - ✅ Enable extension marketplace (需要打开对应的feature)
 
 ## `gitlab.rb`
 
