@@ -282,8 +282,8 @@ export const sidebar = {
     },
     {
       text: "网络",
-      link: "/os/linux/ubuntu/network"
-    }
+      link: "/os/linux/ubuntu/network",
+    },
   ],
   "/software/jellyfin": [
     {
@@ -307,6 +307,12 @@ export const sidebar = {
     {
       text: "配置使用CapsLock作为Escape",
       link: "/software/vscode/capslock-as-esc",
+    },
+  ],
+  "/os/macos": [
+    {
+      text: "md5图片",
+      link: "/os/macos/md5",
     },
   ],
 };
