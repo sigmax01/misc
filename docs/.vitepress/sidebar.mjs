@@ -169,6 +169,10 @@ export const sidebar = {
   ],
   "/software/jetbrains": [
     {
+      text: "基本配置",
+      link: "/software/jetbrains/basic-config",
+    },
+    {
       text: "无法调整MD单元格内的文字大小",
       link: "/software/jetbrains/cannot-addjust-font-in-md-cell",
     },
