@@ -97,6 +97,10 @@ export const nav = [
         link: "/software/ssh",
       },
       {
+        text: "Sublime",
+        link: "/software/sublime",
+      },
+      {
         text: "Torrent",
         link: "/software/torrent",
       },

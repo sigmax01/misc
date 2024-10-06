@@ -319,4 +319,10 @@ export const sidebar = {
       link: "/os/macos/md5",
     },
   ],
+  "/software/sublime": [
+    {
+      text: "配置",
+      link: "/software/sublime/config",
+    },
+  ],
 };

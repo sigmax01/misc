@@ -44,6 +44,7 @@ prev: false
   - ✅ [Nezha](/software/nezha/)
   - ✅ [Portainer](/software/portainer/)
   - ✅ [SSH](/software/ssh/)
+  - ✅ [Sublime](/software/sublime)
   - ✅ [Torrent](/software/torrent/)
   - ✅ [VMWare](/software/vmware/)
   - ✅ [VSCode](/software/vscode/)
