@@ -18,7 +18,9 @@ footer: true
     - Sign-up restrictions:
         - 🈚️ Sign-up enabled
     - Visibility and access controls:
-        - Enabled Git access protocols: Only SSH
+        - Enabled Git access protocols: Both SSH and HTTP(S)
+    - Sign-in restrictions:
+        - 🈚️ 允许通过HTTP(S)对Git进行密码验证
 - Admin-Settings-CI/CD:
     - Continuous Integration and Deployment:
         - 🈚️ Default to Auto DevOps pipeline for all projects
