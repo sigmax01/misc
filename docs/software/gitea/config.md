@@ -12,6 +12,19 @@ footer: true
 
 # 常用配置
 
+## Https
+
+https://docs.gitea.com/administration/https-setup, 这里通过`gitea cert --host [HOST]`自签证书.
+
+```
+[server]
+PROTOCOL  = https
+ROOT_URL  = https://git.example.com:3000/
+HTTP_PORT = 3000
+CERT_FILE = cert.pem
+KEY_FILE  = key.pem
+```
+
 ## service
 
 ```
