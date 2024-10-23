@@ -31,3 +31,12 @@ footer: true
 - Chrome: 一般依赖操作系统的证书库, 只要放到了操作系统证书库里面, Chrome会自动信任
 - Firefox: 进入设置, 选择隐私和安全, 找到证书, 查看证书, 选择导入根证书公钥`rootCA.pem`
 :::
+
+## 把rootCA安装到其他机器上
+
+Installing in the trust store does not require the CA key, so you can export the CA certificate and use mkcert to install it in other machines.
+
+1. Look for the rootCA.pem file in mkcert -CAROOT
+2. copy it to a different machine
+3. set $CAROOT to its directory
+4. run mkcert -instal
