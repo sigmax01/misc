@@ -25,6 +25,8 @@ CERT_FILE = cert.pem
 KEY_FILE  = key.pem
 ```
 
+将cert.pem, key.pem放到/data/gitea下.
+
 ## service
 
 ```
