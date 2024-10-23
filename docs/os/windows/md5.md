@@ -24,7 +24,11 @@ function md5p {
         Rename-Item -Path $latest_file.FullName -NewName $new_name
         wrangler r2 object put ricolxwz-image/"$new_name" --file="$new_path"
         Set-Location C:\Users\wenzexu\image
+        git pull
         Move-Item -Path "$new_path" -Destination "C:\Users\wenzexu\image\$new_name"
+        git add .
+        git commit -m "$(Get-Date -Format 'yyyy-MM-dd')"
+        git push origin
         aws s3 cp C:\Users\wenzexu\image\$new_name s3://ricolxwz-image/ --profile image
         Write-Output "https://img.ricolxwz.io/$new_name" | Set-Clipboard
         Set-Location $current_dir
