@@ -23,7 +23,7 @@ export default defineConfig({
     //   {
     //     src: "https://umami.ricolxwz.io/script.js",
     //     defer: true,
-    //     "data-website-id": "212ed47d-c05f-44c0-8ea4-2c8e1fd31862"
+    //     "data-website-id": "4b51b237-3e7a-4815-a8a3-e0a02a9c2337"
     //   }
     // ],
     [
