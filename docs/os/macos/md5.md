@@ -27,11 +27,11 @@ md5p() {
         mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/snip/"$new_name"
         wrangler r2 object put ricolxwz-image/"$new_name" --file=/Users/wenzexu/snip/"$new_name"
         cd /Users/wenzexu/image
-        git pull
+        # git pull
         mv /Users/wenzexu/snip/"$new_name" /Users/wenzexu/image/
-        git add .
-        git commit -m "$(date +"%Y-%m-%d")"
-        git push origin
+        # git add .
+        # git commit -m "$(date +"%Y-%m-%d")"
+        # git push origin
         aws s3 cp /Users/wenzexu/image/$new_name s3://ricolxwz-image/ --profile image
         echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
         cd $current_dir
