@@ -13,3 +13,7 @@
     --vp-font-family-base: "mononoki", "HarmonyOS Sans SC";/* normal text font */
     --vp-font-family-mono: "mononoki", "HarmonyOS Sans SC";/* code font */
   }
+
+.vp-doc * {
+    border-top: unset !important;
+}
