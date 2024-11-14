@@ -26,7 +26,14 @@ export default defineConfig({
         href: "https://cdn.jsdelivr.net/npm/@ayahub/webfont-harmony-sans-sc@1.0.0/css/index.min.css"
       }
     ],
-    analysis()
+    [
+      'script',
+      {
+        src: "https://umami.ricolxwz.io/script.js",
+        defer: true,
+        "data-website-id": "212ed47d-c05f-44c0-8ea4-2c8e1fd31862"
+      }
+    ],
   ],
   markdown: {
     image: {
