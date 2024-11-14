@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import { nav } from "./nav.mjs";
 import { sidebar } from "./sidebar.mjs";
+import { analysis } from "./analysis";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -18,28 +19,14 @@ export default defineConfig({
         href: "https://cdn.jsdelivr.net/gh/sigmax0124/logo@master/favicon-mc-1.svg",
       },
     ],
-    // [
-    //   'script',
-    //   {
-    //     src: "https://umami.ricolxwz.io/script.js",
-    //     defer: true,
-    //     "data-website-id": "4b51b237-3e7a-4815-a8a3-e0a02a9c2337"
-    //   }
-    // ],
-    [
-      "link",
-      {
-        rel: "stylesheet",
-        href: "https://cdn.jsdelivr.net/npm/@fontsource/mononoki@5.1.0/index.min.css"
-      }
-    ],
     [
       "link",
       {
         rel: "stylesheet",
         href: "https://cdn.jsdelivr.net/npm/@ayahub/webfont-harmony-sans-sc@1.0.0/css/index.min.css"
       }
-    ]
+    ],
+    analysis()
   ],
   markdown: {
     image: {
