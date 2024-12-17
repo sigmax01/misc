@@ -58,20 +58,14 @@ md5p() {
         local inverted_name="${md5_hash}_inverted.${extension_lower}"
         inverted_url="https://img.ricolxwz.io/$inverted_name"
 
-        # 复制原始图片的 URL 到剪贴板
-        echo -n "$original_url" | pbcopy
-        echo "原始图片 URL 已复制到剪贴板。请粘贴以保存。"
-        echo "按 Enter 键继续复制转色调图片 URL 。"
-        read
-        echo -n "$inverted_url" | pbcopy
-        echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
-
+        # 进行图片颜色反转
         magick "$snip_dir/$new_name" -negate \
             -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
             -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
             -quality 100 \
             "$snip_dir/$inverted_name"
-        echo "已处理: $new_name -> $inverted_name"
+
+        echo "已处理图片: $new_name"
         
         # 询问是否执行上传
         echo "是否执行上传操作？（默认否，按 Enter 键继续）[y/N]: "
@@ -92,9 +86,17 @@ md5p() {
             # 输出成功提示
             echo "所有上传操作已完成。"
 
+            # 复制 URL 到剪贴板
+            echo -n "$original_url" | pbcopy
+            echo "原始图片 URL 已复制到剪贴板。请粘贴以保存。"
+            echo "按 Enter 键继续复制转色调图片 URL 。"
+            read
+            echo -n "$inverted_url" | pbcopy
+            echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
+
             # 询问是否执行回滚
             echo "是否执行回滚操作？（默认否，按 Enter 键继续）[y/N]: "
-            read -r -t 10 rollback_choice
+            read -r -t 60 rollback_choice
             if [ $? -gt 128 ]; then
                 rollback_choice="N"
             fi
