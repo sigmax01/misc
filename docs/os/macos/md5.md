@@ -78,7 +78,9 @@ md5p() {
         # 处理原始图片
         local new_name
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
-            new_name="${md5_hash}.webp"
+            extension_lower="webp"
+            echo "here"
+            new_name="${md5_hash}.${extension_lower}"
             magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true "$snip_dir/$new_name"
         else
             if [[ "$latest_file" != "$extension" ]]; then
@@ -93,7 +95,7 @@ md5p() {
         local original_url="https://img.ricolxwz.io/$new_name"
         
         # 生成反转图片的 URL
-        local inverted_name="${md5_hash}_inverted.webp"
+        local inverted_name="${md5_hash}_inverted.${extension_lower}"
         inverted_url="https://img.ricolxwz.io/$inverted_name"
 
         # 复制原始图片的 URL 到剪贴板
@@ -104,12 +106,19 @@ md5p() {
         echo -n "$inverted_url" | pbcopy
         echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
 
-        # 生成反转色调图片：仅调整黑色区域，使其不那么黑
-        magick "$snip_dir/$new_name" -negate \
-        -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black \
-        -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
-        -quality 100 \
-        "$snip_dir/$inverted_name"
+        if [[ "$extension_lower" == "svg" ]]; then
+            # 如果是 SVG，跳过或执行其他操作
+            echo "跳过 SVG 文件: $new_name"
+            # 如果需要对 SVG 执行其他操作，可以在这里添加代码
+        else
+            # 如果不是 SVG，应用 ImageMagick 处理
+            magick "$new_name" -negate \
+                -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
+                -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
+                -quality 100 \
+                "$snip_dir/$inverted_name"
+            echo "已处理: $new_name -> $inverted_name"
+        fi
         
         # 询问是否执行上传
         echo "是否执行上传操作？（默认否，按 Enter 键继续）[y/N]: "
@@ -119,21 +128,17 @@ md5p() {
         if [[ "$upload_choice" =~ ^[Yy]$ ]]; then
             echo "开始执行上传操作..."
         
-            # 1. 上传原始图片到 Amazon S3
+            # 1. 上传图片到 Amazon S3
             aws s3 cp "$snip_dir/$new_name" s3://ricolxwz-image/ --profile image
-            
-            # 2. 上传原始图片到 Cloudflare R2
+            aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
+
+            # 2. 上传图片到 Cloudflare R2
             if [[ "$extension_lower" == "svg" ]]; then
                 wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name" --content-type "image/svg+xml"
             else
                 wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
+                wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
             fi
-            
-            # 3. 上传反转色调图片到 Amazon S3
-            aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
-            
-            # 4. 上传反转色调图片到 Cloudflare R2
-            wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
             
             # 输出成功提示
             echo "所有上传操作已完成。"
