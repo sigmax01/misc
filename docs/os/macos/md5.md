@@ -12,45 +12,6 @@ footer: true
 
 # md5图片
 
-```zsh
-md5p() {
-    current_dir=$(pwd)
-    latest_file=$(ls -t /Users/wenzexu/snip | head -n 1)
-    if [ -n "$latest_file" ]; then
-        md5_hash=$(md5 -qs /Users/wenzexu/snip/"$latest_file")
-        extension="${latest_file##*.}"
-        extension_lower=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
-        if [ "$extension_lower" = "jpg" ] || [ "$extension_lower" = "jpeg" ] || [ "$extension_lower" = "png" ]; then
-            new_name="${md5_hash}.webp"
-            magick "/Users/wenzexu/snip/$latest_file" -quality 100 -define webp:lossless=true "/Users/wenzexu/snip/$new_name"
-        else
-            if [ "$latest_file" != "$extension" ]; then
-                new_name="${md5_hash}.${extension_lower}"
-            else
-                new_name="${md5_hash}"
-            fi
-            mv "/Users/wenzexu/snip/$latest_file" "/Users/wenzexu/snip/$new_name"
-        fi
-        if [ "$extension_lower" = "svg" ]; then
-            wrangler r2 object put ricolxwz-image/"$new_name" --file="/Users/wenzexu/snip/$new_name" --content-type "image/svg+xml"
-        else
-            wrangler r2 object put ricolxwz-image/"$new_name" --file="/Users/wenzexu/snip/$new_name"
-        fi
-        cd /Users/wenzexu/image
-        # git pull
-        mv /Users/wenzexu/snip/"$new_name" /Users/wenzexu/image/
-        # git add .
-        # git commit -m "$(date +"%Y-%m-%d")"
-        # git push origin
-        aws s3 cp /Users/wenzexu/image/$new_name s3://ricolxwz-image/ --profile image
-        echo -n "https://img.ricolxwz.io/$new_name" | pbcopy
-        cd $current_dir
-    else
-        echo "No files found."
-    fi
-}
-```
-
 ```shell
 md5p() {
     # 保存当前工作目录
@@ -105,19 +66,12 @@ md5p() {
         echo -n "$inverted_url" | pbcopy
         echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
 
-        if [[ "$extension_lower" == "svg" ]]; then
-            # 如果是 SVG，跳过或执行其他操作
-            echo "跳过 SVG 文件: $new_name"
-            # 如果需要对 SVG 执行其他操作，可以在这里添加代码
-        else
-            # 如果不是 SVG，应用 ImageMagick 处理
-            magick "$snip_dir/$new_name" -negate \
-                -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
-                -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
-                -quality 100 \
-                "$snip_dir/$inverted_name"
-            echo "已处理: $new_name -> $inverted_name"
-        fi
+        magick "$snip_dir/$new_name" -negate \
+            -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
+            -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
+            -quality 100 \
+            "$snip_dir/$inverted_name"
+        echo "已处理: $new_name -> $inverted_name"
         
         # 询问是否执行上传
         echo "是否执行上传操作？（默认否，按 Enter 键继续）[y/N]: "
@@ -132,12 +86,8 @@ md5p() {
             aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
 
             # 2. 上传图片到 Cloudflare R2
-            if [[ "$extension_lower" == "svg" ]]; then
-                wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name" --content-type "image/svg+xml"
-            else
-                wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
-                wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
-            fi
+            wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
+            wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
             
             # 输出成功提示
             echo "所有上传操作已完成。"
