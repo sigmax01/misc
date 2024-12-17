@@ -19,13 +19,18 @@ md5p() {
     if [ -n "$latest_file" ]; then
         md5_hash=$(md5 -qs /Users/wenzexu/snip/"$latest_file")
         extension="${latest_file##*.}"
+        extension_lower=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
         if [ "$latest_file" != "$extension" ]; then
             new_name="${md5_hash}.${extension}"
         else
             new_name="${md5_hash}"
         fi
         mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/snip/"$new_name"
-        wrangler r2 object put ricolxwz-image/"$new_name" --file=/Users/wenzexu/snip/"$new_name"
+        if [ "$extension_lower" = "svg" ]; then
+            wrangler r2 object put ricolxwz-image/"$new_name" --file="/Users/wenzexu/snip/$new_name" --content-type "image/svg+xml"
+        else
+            wrangler r2 object put ricolxwz-image/"$new_name" --file="/Users/wenzexu/snip/$new_name"
+        fi
         cd /Users/wenzexu/image
         # git pull
         mv /Users/wenzexu/snip/"$new_name" /Users/wenzexu/image/

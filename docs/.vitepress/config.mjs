@@ -22,17 +22,24 @@ export default defineConfig({
       "link",
       {
         rel: "stylesheet",
-        href: "https://cdn.jsdelivr.net/npm/@ayahub/webfont-harmony-sans-sc@1.0.0/css/index.min.css"
-      }
+        href: "https://cdn.jsdelivr.net/npm/@fontsource/mononoki@5.1.0/index.min.css",
+      },
     ],
     [
-      'script',
+      "link",
       {
-        src: "https://umami.ricolxwz.io/script.js",
-        defer: true,
-        "data-website-id": "4b51b237-3e7a-4815-a8a3-e0a02a9c2337"
-      }
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/@ayahub/webfont-harmony-sans-sc@1.0.0/css/index.min.css",
+      },
     ],
+    // [
+    //   "script",
+    //   {
+    //     src: "https://umami.ricolxwz.io/script.js",
+    //     defer: true,
+    //     "data-website-id": "4b51b237-3e7a-4815-a8a3-e0a02a9c2337",
+    //   },
+    // ],
   ],
   markdown: {
     image: {
