@@ -258,6 +258,7 @@ md5p() {
         echo "按 Enter 键继续复制转色调图片 URL 。"
         read
         echo -n "$inverted_url" | pbcopy
+        echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
         
         # 开始执行上传操作
         
