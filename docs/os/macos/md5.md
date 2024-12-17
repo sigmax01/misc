@@ -79,7 +79,6 @@ md5p() {
         local new_name
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
             extension_lower="webp"
-            echo "here"
             new_name="${md5_hash}.${extension_lower}"
             magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true "$snip_dir/$new_name"
         else
@@ -112,7 +111,7 @@ md5p() {
             # 如果需要对 SVG 执行其他操作，可以在这里添加代码
         else
             # 如果不是 SVG，应用 ImageMagick 处理
-            magick "$new_name" -negate \
+            magick "$snip_dir/$new_name" -negate \
                 -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
                 -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
                 -quality 100 \
@@ -142,10 +141,6 @@ md5p() {
             
             # 输出成功提示
             echo "所有上传操作已完成。"
-            echo "原始图片 URL: $original_url"
-            if [[ "$upload_inverted" == true ]]; then
-                echo "反转色调图片 URL: $inverted_url"
-            fi
 
             # 询问是否执行回滚
             echo "是否执行回滚操作？（默认否，按 Enter 键继续）[y/N]: "
