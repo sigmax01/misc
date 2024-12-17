@@ -59,25 +59,16 @@ md5p() {
     
     # 定义相关目录和日志文件
     local snip_dir="/Users/wenzexu/snip"
-    local log_file="/Users/wenzexu/md5p.log"
-    
-    # 设置是否上传反转色调图片（根据需求，这里默认设为 true）
-    local upload_inverted=true
     
     # 获取最新的文件
     local latest_file
     latest_file=$(ls -t "$snip_dir" | head -n 1)
     
     if [[ -n "$latest_file" ]]; then
-        echo "$(date +"%Y-%m-%d %H:%M:%S") - 处理文件: $latest_file" >> "$log_file"
         
         # 计算 MD5 哈希值
         local md5_hash
         md5_hash=$(md5 -qs "$snip_dir/$latest_file")
-        if [[ -z "$md5_hash" ]]; then
-            echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 计算 MD5 哈希值失败。" >> "$log_file"
-            return 1
-        fi
         
         # 获取文件扩展名并转为小写
         local extension extension_lower
@@ -89,10 +80,6 @@ md5p() {
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
             new_name="${md5_hash}.webp"
             magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true "$snip_dir/$new_name"
-            if [[ $? -ne 0 ]]; then
-                echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 转换为 WebP 失败。" >> "$log_file"
-                return 1
-            fi
         else
             if [[ "$latest_file" != "$extension" ]]; then
                 new_name="${md5_hash}.${extension_lower}"
@@ -100,23 +87,14 @@ md5p() {
                 new_name="${md5_hash}"
             fi
             mv "$snip_dir/$latest_file" "$snip_dir/$new_name"
-            if [[ $? -ne 0 ]]; then
-                echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 重命名文件失败。" >> "$log_file"
-                return 1
-            fi
         fi
-        
+
         # 生成原始图片的 URL
         local original_url="https://img.ricolxwz.io/$new_name"
         
-        # 初始化变量以存储反转色调图片的 URL
-        local inverted_url=""
-        
-        # 如果需要上传反转色调图片，生成对应的 URL
-        if [[ "$upload_inverted" == true ]]; then
-            local inverted_name="${md5_hash}_inverted.webp"
-            inverted_url="https://img.ricolxwz.io/$inverted_name"
-        fi
+        # 生成反转图片的 URL
+        local inverted_name="${md5_hash}_inverted.webp"
+        inverted_url="https://img.ricolxwz.io/$inverted_name"
 
         # 复制原始图片的 URL 到剪贴板
         echo -n "$original_url" | pbcopy
@@ -125,15 +103,14 @@ md5p() {
         read
         echo -n "$inverted_url" | pbcopy
         echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
+
+        # 生成反转色调图片：仅调整黑色区域，使其不那么黑
+        magick "$snip_dir/$new_name" -negate -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black "$snip_dir/$inverted_name"
         
         # 开始执行上传操作
         
         # 1. 上传原始图片到 Amazon S3
         aws s3 cp "$snip_dir/$new_name" s3://ricolxwz-image/ --profile image
-        if [[ $? -ne 0 ]]; then
-            echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 上传原始图片到 S3 失败。" >> "$log_file"
-            return 1
-        fi
         
         # 2. 上传原始图片到 Cloudflare R2
         if [[ "$extension_lower" == "svg" ]]; then
@@ -141,35 +118,12 @@ md5p() {
         else
             wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
         fi
-        if [[ $? -ne 0 ]]; then
-            echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 上传原始图片到 R2 失败。" >> "$log_file"
-            return 1
-        fi
         
-        # 如果需要上传反转色调图片
-        if [[ "$upload_inverted" == true ]]; then
-            # 生成反转色调图片：仅调整黑色区域，使其不那么黑
-            local inverted_name="${md5_hash}_inverted.webp"
-            magick "$snip_dir/$new_name" -negate -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black "$snip_dir/$inverted_name"
-            if [[ $? -ne 0 ]]; then
-                echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 生成反转色调图片失败。" >> "$log_file"
-                return 1
-            fi
-            
-            # 3. 上传反转色调图片到 Amazon S3
-            aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
-            if [[ $? -ne 0 ]]; then
-                echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 上传反转色调图片到 S3 失败。" >> "$log_file"
-                return 1
-            fi
-            
-            # 4. 上传反转色调图片到 Cloudflare R2
-            wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
-            if [[ $? -ne 0 ]]; then
-                echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 上传反转色调图片到 R2 失败。" >> "$log_file"
-                return 1
-            fi
-        fi
+        # 3. 上传反转色调图片到 Amazon S3
+        aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
+        
+        # 4. 上传反转色调图片到 Cloudflare R2
+        wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
         
         # 输出成功提示
         echo "所有上传操作已完成。"
@@ -177,9 +131,36 @@ md5p() {
         if [[ "$upload_inverted" == true ]]; then
             echo "反转色调图片 URL: $inverted_url"
         fi
+
+        # 询问是否执行回滚
+        echo "是否执行回滚操作？（默认否，按 Enter 键继续）[y/N]: "
+        read -r rollback_choice
+        rollback_choice=${rollback_choice:-N}  # 默认值为 N
         
-        # 记录到日志文件
-        echo "$(date +"%Y-%m-%d %H:%M:%S") - 所有上传操作已完成。" >> "$log_file"
+        if [[ "$rollback_choice" =~ ^[Yy]$ ]]; then
+            echo "开始执行回滚操作..."
+            
+            # 回滚函数
+            rollback() {
+                local file_name="$1"
+                
+                # 从 Amazon S3 移除文件
+                aws s3 rm s3://ricolxwz-image/"$file_name" --profile image
+                
+                # 从 Cloudflare R2 移除文件
+                wrangler r2 object delete ricolxwz-image/"$file_name"
+            }
+            
+            # 回滚原始图片
+            rollback "$new_name"
+            
+            # 回滚反转图片
+            rollback "$inverted_name"
+            
+            echo "回滚操作已完成。"
+        else
+            echo "未执行回滚操作。"
+        fi
         
         # 返回到初始目录
         cd "$current_dir"
