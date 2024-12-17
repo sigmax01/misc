@@ -41,7 +41,7 @@ md5p() {
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
             extension_lower="webp"
             new_name="${md5_hash}.${extension_lower}"
-            magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true "$snip_dir/$new_name"
+            magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true -fuzz 20% -fill white -opaque white "$snip_dir/$new_name"
         else
             if [[ "$latest_file" != "$extension" ]]; then
                 new_name="${md5_hash}.${extension_lower}"
