@@ -139,7 +139,7 @@ md5p() {
             # 生成反转色调图片
             local inverted_name
             inverted_name="${md5_hash}_inverted.webp"
-            magick "$snip_dir/$new_name" -negate "$snip_dir/$inverted_name"
+            magick "$snip_dir/$new_name" -negate -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black "$snip_dir/$inverted_name"
             if [[ $? -ne 0 ]]; then
                 echo "$(date +"%Y-%m-%d %H:%M:%S") - 错误: 生成反转色调图片失败。" >> "$log_file"
                 return 1
