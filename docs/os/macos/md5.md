@@ -105,61 +105,77 @@ md5p() {
         echo "反转图片 URL 已复制到剪贴板。请粘贴以保存。"
 
         # 生成反转色调图片：仅调整黑色区域，使其不那么黑
-        magick "$snip_dir/$new_name" -negate -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black "$snip_dir/$inverted_name"
+        magick "$snip_dir/$new_name" -negate \
+        -fuzz 10% -fill "rgb(18, 19, 23)" -opaque black \
+        -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
+        -quality 100 \
+        "$snip_dir/$inverted_name"
         
-        # 开始执行上传操作
-        
-        # 1. 上传原始图片到 Amazon S3
-        aws s3 cp "$snip_dir/$new_name" s3://ricolxwz-image/ --profile image
-        
-        # 2. 上传原始图片到 Cloudflare R2
-        if [[ "$extension_lower" == "svg" ]]; then
-            wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name" --content-type "image/svg+xml"
-        else
-            wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
-        fi
-        
-        # 3. 上传反转色调图片到 Amazon S3
-        aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
-        
-        # 4. 上传反转色调图片到 Cloudflare R2
-        wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
-        
-        # 输出成功提示
-        echo "所有上传操作已完成。"
-        echo "原始图片 URL: $original_url"
-        if [[ "$upload_inverted" == true ]]; then
-            echo "反转色调图片 URL: $inverted_url"
-        fi
+        # 询问是否执行上传
+        echo "是否执行上传操作？（默认否，按 Enter 键继续）[y/N]: "
+        read -r upload_choice
+        upload_choice=${upload_choice:-Y}  # 默认值为 Y
 
-        # 询问是否执行回滚
-        echo "是否执行回滚操作？（默认否，按 Enter 键继续）[y/N]: "
-        read -r rollback_choice
-        rollback_choice=${rollback_choice:-N}  # 默认值为 N
+        if [[ "$upload_choice" =~ ^[Yy]$ ]]; then
+            echo "开始执行上传操作..."
         
-        if [[ "$rollback_choice" =~ ^[Yy]$ ]]; then
-            echo "开始执行回滚操作..."
+            # 1. 上传原始图片到 Amazon S3
+            aws s3 cp "$snip_dir/$new_name" s3://ricolxwz-image/ --profile image
             
-            # 回滚函数
-            rollback() {
-                local file_name="$1"
+            # 2. 上传原始图片到 Cloudflare R2
+            if [[ "$extension_lower" == "svg" ]]; then
+                wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name" --content-type "image/svg+xml"
+            else
+                wrangler r2 object put ricolxwz-image/"$new_name" --file="$snip_dir/$new_name"
+            fi
+            
+            # 3. 上传反转色调图片到 Amazon S3
+            aws s3 cp "$snip_dir/$inverted_name" s3://ricolxwz-image/ --profile image
+            
+            # 4. 上传反转色调图片到 Cloudflare R2
+            wrangler r2 object put ricolxwz-image/"$inverted_name" --file="$snip_dir/$inverted_name"
+            
+            # 输出成功提示
+            echo "所有上传操作已完成。"
+            echo "原始图片 URL: $original_url"
+            if [[ "$upload_inverted" == true ]]; then
+                echo "反转色调图片 URL: $inverted_url"
+            fi
+
+            # 询问是否执行回滚
+            echo "是否执行回滚操作？（默认否，按 Enter 键继续）[y/N]: "
+            read -r -t 10 rollback_choice
+            if [ $? -gt 128 ]; then
+                rollback_choice="N"
+            fi
+            rollback_choice=${rollback_choice:-N}  # 默认值为 N
+            
+            if [[ "$rollback_choice" =~ ^[Yy]$ ]]; then
+                echo "开始执行回滚操作..."
                 
-                # 从 Amazon S3 移除文件
-                aws s3 rm s3://ricolxwz-image/"$file_name" --profile image
+                # 回滚函数
+                rollback() {
+                    local file_name="$1"
+                    
+                    # 从 Amazon S3 移除文件
+                    aws s3 rm s3://ricolxwz-image/"$file_name" --profile image
+                    
+                    # 从 Cloudflare R2 移除文件
+                    wrangler r2 object delete ricolxwz-image/"$file_name"
+                }
                 
-                # 从 Cloudflare R2 移除文件
-                wrangler r2 object delete ricolxwz-image/"$file_name"
-            }
-            
-            # 回滚原始图片
-            rollback "$new_name"
-            
-            # 回滚反转图片
-            rollback "$inverted_name"
-            
-            echo "回滚操作已完成。"
+                # 回滚原始图片
+                rollback "$new_name"
+                
+                # 回滚反转图片
+                rollback "$inverted_name"
+                
+                echo "回滚操作已完成。"
+            else
+                echo "未执行回滚操作。"
+            fi
         else
-            echo "未执行回滚操作。"
+            echo "未执行上传操作。"
         fi
         
         # 返回到初始目录
