@@ -251,6 +251,13 @@ md5p() {
             local inverted_name="${md5_hash}_inverted.webp"
             inverted_url="https://img.ricolxwz.io/$inverted_name"
         fi
+
+        # 复制原始图片的 URL 到剪贴板
+        echo -n "$original_url" | pbcopy
+        echo "原始图片 URL 已复制到剪贴板。请粘贴以保存。"
+        echo "按 Enter 键继续复制转色调图片 URL 。"
+        read
+        echo -n "$inverted_url" | pbcopy
         
         # 开始执行上传操作
         
@@ -309,5 +316,6 @@ md5p() {
         
         # 返回到初始目录
         cd "$current_dir"
-    }
+    fi
+}
 ```
