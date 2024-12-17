@@ -20,12 +20,17 @@ md5p() {
         md5_hash=$(md5 -qs /Users/wenzexu/snip/"$latest_file")
         extension="${latest_file##*.}"
         extension_lower=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
-        if [ "$latest_file" != "$extension" ]; then
-            new_name="${md5_hash}.${extension}"
+        if [ "$extension_lower" = "jpg" ] || [ "$extension_lower" = "jpeg" ] || [ "$extension_lower" = "png" ]; then
+            new_name="${md5_hash}.webp"
+            magick "/Users/wenzexu/snip/$latest_file" -quality 100 -define webp:lossless=true "/Users/wenzexu/snip/$new_name"
         else
-            new_name="${md5_hash}"
+            if [ "$latest_file" != "$extension" ]; then
+                new_name="${md5_hash}.${extension_lower}"
+            else
+                new_name="${md5_hash}"
+            fi
+            mv "/Users/wenzexu/snip/$latest_file" "/Users/wenzexu/snip/$new_name"
         fi
-        mv /Users/wenzexu/snip/"$latest_file" /Users/wenzexu/snip/"$new_name"
         if [ "$extension_lower" = "svg" ]; then
             wrangler r2 object put ricolxwz-image/"$new_name" --file="/Users/wenzexu/snip/$new_name" --content-type "image/svg+xml"
         else
@@ -44,5 +49,4 @@ md5p() {
         echo "No files found."
     fi
 }
-
 ```
