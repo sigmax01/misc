@@ -35,13 +35,35 @@ md5p() {
         local extension extension_lower
         extension="${latest_file##*.}"
         extension_lower=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
+
+        # 默认fuzz值
+        DEFAULT_FUZZ1=20
+        DEFAULT_FUZZ2=10
+
+        # 检查是否提供了两个fuzz值作为参数
+        if [ $# -eq 2 ]; then
+            # 检查参数是否为数字
+            if [[ "$1" =~ ^[0-9]+$ ]] && [[ "$2" =~ ^[0-9]+$ ]]; then
+                FUZZ_VALUE1="${1}%"
+                FUZZ_VALUE2="${2}%"
+            else
+                echo "错误: fuzz值必须是数字。" >&2
+                exit 1
+            fi
+        elif [ $# -eq 0 ]; then
+            FUZZ_VALUE1="${DEFAULT_FUZZ1}%"
+            FUZZ_VALUE2="${DEFAULT_FUZZ2}%"
+        else
+            echo "用法: $0 [fuzz1] [fuzz2]" >&2
+            exit 1
+        fi
         
         # 处理原始图片
         local new_name
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
             extension_lower="webp"
             new_name="${md5_hash}.${extension_lower}"
-            magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true -fuzz 20% -fill white -opaque white "$snip_dir/$new_name"
+            magick "$snip_dir/$latest_file" -quality 100 -define webp:lossless=true -fuzz "$FUZZ_VALUE1" -fill white -opaque white "$snip_dir/$new_name"
         else
             if [[ "$latest_file" != "$extension" ]]; then
                 new_name="${md5_hash}.${extension_lower}"
@@ -60,8 +82,8 @@ md5p() {
 
         # 进行图片颜色反转
         magick "$snip_dir/$new_name" -negate \
-            -fuzz 20% -fill "rgb(18,19,23)" -opaque black \
-            -fuzz 20% -fill "rgb(226,228,233)" -opaque white \
+            -fuzz "$FUZZ_VALUE2" -fill "rgb(18,19,23)" -opaque black \
+            -fuzz "$FUZZ_VALUE2" -fill "rgb(226,228,233)" -opaque white \
             -quality 100 \
             "$snip_dir/$inverted_name"
 
