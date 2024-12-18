@@ -37,8 +37,8 @@ md5p() {
         extension_lower=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
 
         # 默认fuzz值
-        DEFAULT_FUZZ1=20
-        DEFAULT_FUZZ2=10
+        DEFAULT_FUZZ1=2
+        DEFAULT_FUZZ2=2
 
         # 检查是否提供了两个fuzz值作为参数
         if [ $# -eq 2 ]; then
