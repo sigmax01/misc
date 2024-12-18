@@ -60,8 +60,8 @@ md5p() {
 
         # 进行图片颜色反转
         magick "$snip_dir/$new_name" -negate \
-            -fuzz 10% -fill "rgb(18,19,23)" -opaque black \
-            -fuzz 10% -fill "rgb(226,228,233)" -opaque white \
+            -fuzz 20% -fill "rgb(18,19,23)" -opaque black \
+            -fuzz 20% -fill "rgb(226,228,233)" -opaque white \
             -quality 100 \
             "$snip_dir/$inverted_name"
 
