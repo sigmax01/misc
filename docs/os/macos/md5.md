@@ -81,7 +81,7 @@ md5p() {
         inverted_url="https://img.ricolxwz.io/$inverted_name"
 
         # 进行图片颜色反转
-        magick "$snip_dir/$latest_file" -negate \
+        magick "$snip_dir/$new_name" -negate \
             -fuzz "$FUZZ_VALUE2" -fill "rgb(18,19,23)" -opaque black \
             -fuzz "$FUZZ_VALUE2" -fill "rgb(226,228,233)" -opaque white \
             -quality 100 \
