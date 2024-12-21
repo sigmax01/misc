@@ -57,7 +57,7 @@ md5p() {
             echo "用法: $0 [fuzz1] [fuzz2]" >&2
             exit 1
         fi
-        
+
         # 处理原始图片
         local new_name
         if [[ "$extension_lower" == "jpg" || "$extension_lower" == "jpeg" || "$extension_lower" == "png" ]]; then
@@ -81,7 +81,7 @@ md5p() {
         inverted_url="https://img.ricolxwz.io/$inverted_name"
 
         # 进行图片颜色反转
-        magick "$snip_dir/$new_name" -negate \
+        magick "$snip_dir/$latest_file" -negate \
             -fuzz "$FUZZ_VALUE2" -fill "rgb(18,19,23)" -opaque black \
             -fuzz "$FUZZ_VALUE2" -fill "rgb(226,228,233)" -opaque white \
             -quality 100 \
